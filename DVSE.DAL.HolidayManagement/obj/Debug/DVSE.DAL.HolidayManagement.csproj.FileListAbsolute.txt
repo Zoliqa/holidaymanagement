@@ -13,3 +13,18 @@ C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations
 C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csproj.GenerateResource.Cache
 C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.dll
 C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.pdb
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.dll.config
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.dll
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.pdb
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\EntityFramework.dll
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.dll
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.EntityFramework.dll
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\EntityFramework.xml
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.xml
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.EntityFramework.xml
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csprojResolveAssemblyReference.cache
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.CreateDb.resources
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.AddRequestDateToRequest.resources
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csproj.GenerateResource.Cache
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.dll
+J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.pdb
