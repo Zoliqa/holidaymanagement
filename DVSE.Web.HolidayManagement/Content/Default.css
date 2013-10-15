@@ -1,0 +1,24 @@
+﻿
+.month-calendar {
+    display:inline-block;
+    vertical-align:top;
+    margin: 10px;
+    border: solid 1px #000;
+}
+
+.calendars-row {
+    text-align: center;
+}
+
+.month-cell {
+    text-align:center;
+}
+
+.month-calendar th {
+    padding: 2px;
+    text-align: center;
+}
+
+.month-calendar td {
+    padding: 0;
+}

@@ -1,0 +1,15 @@
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.dll.config
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.dll
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.pdb
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\EntityFramework.dll
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.dll
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.EntityFramework.dll
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\EntityFramework.xml
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.xml
+C:\HM\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.EntityFramework.xml
+C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csprojResolveAssemblyReference.cache
+C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.CreateDb.resources
+C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.AddRequestDateToRequest.resources
+C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csproj.GenerateResource.Cache
+C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.dll
+C:\HM\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.pdb
