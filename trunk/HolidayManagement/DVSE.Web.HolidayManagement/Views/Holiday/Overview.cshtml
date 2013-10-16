@@ -1,0 +1,18 @@
+﻿@model DVSE.Web.HolidayManagement.Models.HolidayOverviewViewModel
+
+<div>Hello @User.Identity.Name</div>
+
+@helper PrintCalendars(int i)
+{
+    for (var j = i; j < i + 4; ++j)
+    {
+        Html.RenderPartial(MVC.Shared.Views._MonthlyCalendar, Model.MonthlyCalendars[j]);
+    }
+}
+
+@for (var i = 0; i < Model.MonthlyCalendars.Count(); i += 4)
+{
+    <div class="calendars-row">
+        @PrintCalendars(i)
+    </div>
+}
