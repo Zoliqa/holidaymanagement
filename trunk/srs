@@ -1,0 +1,77 @@
+	
+
+
+
+Holiday Management
+
+
+
+
+
+
+Szoftver követelmény specifikáció
+
+1.0 Verzió
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dátum	Verzió	Leírás	Szerző
+2013.10.18	1.0	Kezdeti verzió	Dályay Kinga-Hajnalka
+			
+			
+			
+
+Tartalomjegyzék
+1. Bevezetés	2
+1.1.  Cél	2
+2. Általános leírás	2
+3. A rendszer funkciói	2
+3.1. Use Case	2
+3.1.1. Aktorok	2
+3.1.1. Összes szabadság áttekintése	2
+3.1.2. Új szabadság igénylése	2
+3.1.3. Szabadság jóváhagyása / elutasítása	2
+3.1.4. Csoportok menedzselése	3
+3.2. Funkciónális követelmények	3
+
+1. Bevezetés
+1.1.  Cél
+A Holiday Management egy web alapú alkalmazás, amely ASP.NET MVC 4 tehnológiában lesz fejlesztve, C#-ot használva, amely az alkalmazottak szabadságának menedzselésére szolgál.  
+2. Általános leírás
+A rendszerben a felhasználóknak lehetőséget kell biztosítani új szabadság igénylésére, a maradék szabadnapok megtekintésére és a már igényelt szabadnapok átnézésére, illetve az ugyanazon a csoporton belüli személyek szabadság igényléseinek megtekintésére is. 
+3. A rendszer funkciói
+A rendszerbe felhasználók segítségével jelentkezünk be. Kétféle felhasználó lesz: admin és alkalmazottak. A felhasználóneveket az active directory-ból vesszük ki, így nem lesz szükség új felhasználó hozzáadására, módosítására és törlésére.
+3.1. Use Case
+3.1.1. Aktorok
+3.1.1.1. Admin
+Az admin olyan felhasználó, amely az alkalmazottak szabadság igénylését kezeli.
+3.1.1.2. Alkalmazott
+Az alkalmazott a cégen belüli dolgozó, aki minden évben 21 szabadnappal rendelkezik.
+3.1.1. Összes szabadság áttekintése
+Az admin az összes szabadságot áttekintheti egy összefoglaló oldalon.
+3.1.2. Új szabadság igénylése
+Egy új szabadság igénylés esetében az admin egy értesítő levelet kap, amely tartalmaz egy linket, ami az új kérelem jóváhagyási oldalára vezet.
+3.1.3. Szabadság jóváhagyása / elutasítása
+A szabadságot jóvá lehet hagyni, illetve el lehet utasítani. Az alkalmazott egy levelet kap miután a jóváhagyás vagy elutasítás megtörtént, amelyben egy link a kérelem megtekintéséhez vezet.
+3.1.4. Csoportok menedzselése
+Az admin felhasználó új csoportot tud létrehozni, valamint módosítani és törölni, illteve csoportokba helyezi az alkalmazottakat.
+3.2. Funkciónális követelmények
+•	A szabadnap igénylése csak jövőbeli dátumra lehetséges
+•	A hivatalos ünnepek bevitele és módosítása az admin által
+•	A cég által előre meghatározott szabadnapok bevitele és alkalmazása mindenki számára (pl. Karácsony és Szilveszter közötti szabadnapok) 
