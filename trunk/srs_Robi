@@ -1,0 +1,44 @@
+1. A felhasználók egy online felületen kérjenek szabadnapot, a kérésben szerepelnie kell a szabadság időtartamának illetve a kérő megjegyzéseit is, ha van ilyen.
+
+	1.1 Egy naptár megjelenítése a felhasználónak, amelyen egérrel kiválaszthatja a 		       szabadság első illetve utolsó napját. Ha csak egy dátumot választ ki, akkor csak az 	       az egy dátum kerül majd elküldésre, ami azt jelenti, hogy a kérés csak egy napra 	       és nem periódusra vonatkozik
+	1.2 A kiválasztott periódus kiszíneződik
+	1.3 A szabadság kérés nem vonatkozhat múlt beli időtartamra, így a naptáron csak az 	       aktuális nap utáni időpontok legyenek aktívak
+	1.4 Hétvégék ne legyenek aktívak (kiválaszthatók)
+	1.5 A naptár mellett egy szövegdoboz megjelenítése, melybe a felhasználó a 	  	       megjegyzéseit írhatja
+	1.6 Küldés gomb elhelyezése a naptár illetve szövegdoboz mellé
+
+2. Az admin kapjon értesítést a bejövő kérésről
+
+	2.1 Az adminnak e-mailt küldd a rendszer az általa megadott e-mail címre
+
+3. Az adminnak jól láthatók kell legyenek az elbírálatlan kérések, illetve el kell bírálnia a kéréseket, amiről a rendszernek értesítést kell küldeni a felhasználónak.
+
+	3.1 Lista megjelenítése az admin számára, melyben az elbírálatlan kérések más színnel 	      vannak megjelölve
+	3.2 A kérést kiválasztva az adminnak megjelenik egy naptár melyben a kért napok 	      színezve jelennek meg
+	3.3 A naptár mellett megjelenítésre kerül a kérő által írt megjegyzés is (ha van ilyen)
+	3.4 Két gomb (Elfogadva, Visszautasítva) elhelyezése a naptár alatt
+	3.5 A kérő e-mailt kap az elfogadásról vagy a visszautasításról
+
+4. Az adminnak be kell tudnia vezetni a rendszerbe kötelező szabadnapokat, személyre szabottan, vagy akár az összes felhasználónak.
+
+	4.1 Naptár megjelenítése, melyen az admin a napokra kattintva először kiválasztja őket 	      (elszíneződnek), második kattintásra viszont érvénytelenítődik a kiválasztás. Múlt 	      beli dátumok illetve hétvégék nem kiválaszthatók
+	4.2 A naptár mellett legyen egy lista, meyben az összes felhasználó szerepel. 	  	      Kattintásra egy felhasználó kiválasztható, akire érvényesek lesznek a naptárban 	      kiválasztott változtatások. CTRL+ Click-el egyszerre több felhasználó is 	    	      kiválasztható.
+	4.3 A lista felett legyen egy checkbox, melyet bejelölve az összes felhasználó 	  	      kiválasztódik
+	4.4 Érvényesítés gomb megjelenítése, mely ha megnyomásra kerül, akkor a naptárban 	      kiválasztott napok szabadnapként fognak megjelenni a kiválasztott felhasználóknál
+
+5. Az adminnak meg kell tudnia határozni a szabadnapok számát, illetve a felhasználók infomrációt kell kapjanak a még meglévő szabadnapjaik számról
+
+	5.1 Lista megjelenítése az adminnak az összes felhasználóval
+	5.2 Szövegdoboz megjelenítése a lista mellett, ami inaktív, amíg egy felhasználó sincs 	      kiválasztva
+	5.3 A listából kattintással egy felhasználó, de CTRL+Click-el egyszerre több 		      felhasználó is kiválasztható
+	5.4 Checkbox megjelenítése, mely aktiválásával az összes felhasználó kiválasztódik
+	5.5 A szövegdobozba csak számokat lehessen beírni, 40-nél nagyobb számot ne 	  	      fogadjon el a rendszer
+	5.6 Amint a szövegdobozon kívül kattintunk, a rendszer ellenőrzi a beírt értéket és ha 	      az helyes, akkor elmenti, ellenkező esetben figyelmeztet a hibára
+	5.7 A felhasználóknak a belépés után megjelenik, hogy hány szabadnappal 	  	      rendelkeznek
+
+6. Csapattagok lássák egymás szabadnapjait
+
+	6.1 Az admin csoportokat értelmezhet
+	6.2 Egy felhasználó több csoportba is tartozhat
+	6.3 Minden felhasználónak, aki legalább egy csoporthoz tartozik, megjelenik egy lista 	      az azonos csoporthoz tartozók nevével
+	6.4 Ebből a listából egy névre kattintva, megjelenik egy naptár, melyen kiemelve 	      láthatja az adott felhasználó kért és elfogadott szabadnapjait
