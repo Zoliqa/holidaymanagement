@@ -21,4 +21,6 @@
 
 .month-calendar td {
     padding: 0;
+    cursor: pointer;
 }
+

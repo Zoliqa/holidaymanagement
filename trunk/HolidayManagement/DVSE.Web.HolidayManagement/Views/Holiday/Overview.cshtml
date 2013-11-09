@@ -16,3 +16,55 @@
         @PrintCalendars(i)
     </div>
 }
+
+@Html.Partial(MVC.Holiday.Views._Request, Model.RequestViewModel)
+
+@section Scripts
+{
+<script>
+    function OverviewModel() {
+        var self = this;
+
+        var startDate = null;
+        var endDate = null;
+
+        var $dlgRequest = null;
+
+        var $startDate = null;
+        var $endDate = null;
+
+        this.initialize = function () {
+            $dlgRequest = $("#dlgRequest");
+
+            $startDate = $("#StartDate");
+            $endDate = $("#EndDate");
+
+            var $td = $(".month-calendar td");
+
+            $td.on("click", function () {
+                var day = parseInt($(this).html());
+                var month = parseInt($(this).parents(".month-calendar").find("input[name=MonthIndex]").val());
+
+                if (startDate == null)
+                    startDate = new Date(2013, month, day);
+                else {
+                    endDate = new Date(2013, month, day);
+
+                    $startDate.val(startDate.toString());
+                    $endDate.val(endDate.toString());
+
+                    $dlgRequest.dialog({
+                        width: 400
+                    });
+                }
+            });
+        };
+    }
+
+    var overviewModel = new OverviewModel();
+
+    $(function () {
+        overviewModel.initialize();
+    });
+</script>
+}

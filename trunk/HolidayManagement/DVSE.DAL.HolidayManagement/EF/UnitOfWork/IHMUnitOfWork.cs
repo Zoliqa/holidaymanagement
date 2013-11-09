@@ -25,5 +25,7 @@ namespace DVSE.DAL.HolidayManagement.EF.UnitOfWork
         IEntityRepository<Role> RoleRepository { get; }
 
         IEntityRepository<Team> TeamRepository { get; }
+
+        void Save ();
     }
 }

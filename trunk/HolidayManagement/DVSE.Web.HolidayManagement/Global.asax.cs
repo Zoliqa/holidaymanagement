@@ -16,7 +16,7 @@ namespace DVSE.Web.HolidayManagement
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();// test
+            AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

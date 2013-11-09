@@ -25,6 +25,7 @@ using T4MVC;
 public static class MVC
 {
     public static DVSE.Web.HolidayManagement.Controllers.HolidayController Holiday = new DVSE.Web.HolidayManagement.Controllers.T4MVC_HolidayController();
+    public static DVSE.Web.HolidayManagement.Controllers.ManagementController Management = new DVSE.Web.HolidayManagement.Controllers.T4MVC_ManagementController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -83,17 +84,6 @@ namespace Links
         public static readonly string knockout_2_1_0_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/knockout-2.1.0.debug.min.js") ? Url("knockout-2.1.0.debug.min.js") : Url("knockout-2.1.0.debug.js");
         public static readonly string knockout_2_1_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/knockout-2.1.0.min.js") ? Url("knockout-2.1.0.min.js") : Url("knockout-2.1.0.js");
         public static readonly string modernizr_2_5_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.5.3.min.js") ? Url("modernizr-2.5.3.min.js") : Url("modernizr-2.5.3.js");
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class T4MvcJs {
-            private const string URLPATH = "~/Scripts/T4MvcJs";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string T4MVC_source_t4 = Url("T4MVC.source.t4");
-            public static readonly string T4MVC_tt_settings_t4 = Url("T4MVC.tt.settings.t4");
-            public static readonly string T4MvcJs_tt = Url("T4MvcJs.tt");
-            public static readonly string T4MvcJs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/T4MvcJs.min.js") ? Url("T4MvcJs.min.js") : Url("T4MvcJs.js");
-        }
-    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

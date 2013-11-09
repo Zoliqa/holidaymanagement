@@ -11,6 +11,8 @@ namespace DVSE.DAL.HolidayManagement.Entity
     {
         public int Id { get; set; }
 
+        public String ADName { get; set; }
+
         public String FirstName { get; set; }
 
         public String LastName { get; set; }

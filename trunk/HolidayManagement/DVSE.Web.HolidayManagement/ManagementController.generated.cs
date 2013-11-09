@@ -22,10 +22,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace DVSE.Web.HolidayManagement.Controllers
 {
-    public partial class HolidayController
+    public partial class ManagementController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected HolidayController(Dummy d) { }
+        public ManagementController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected ManagementController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -41,21 +44,15 @@ namespace DVSE.Web.HolidayManagement.Controllers
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult CreateRequest()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateRequest);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HolidayController Actions { get { return MVC.Holiday; } }
+        public ManagementController Actions { get { return MVC.Management; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Holiday";
+        public readonly string Name = "Management";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Holiday";
+        public const string NameConst = "Management";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -64,27 +61,15 @@ namespace DVSE.Web.HolidayManagement.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Overview = "Overview";
-            public readonly string CreateRequest = "CreateRequest";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Overview = "Overview";
-            public const string CreateRequest = "CreateRequest";
         }
 
 
-        static readonly ActionParamsClass_CreateRequest s_params_CreateRequest = new ActionParamsClass_CreateRequest();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_CreateRequest CreateRequestParams { get { return s_params_CreateRequest; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_CreateRequest
-        {
-            public readonly string requestVM = "requestVM";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -95,18 +80,16 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _Request = "_Request";
-                public readonly string Overview = "Overview";
+                public readonly string Index = "Index";
             }
-            public readonly string _Request = "~/Views/Holiday/_Request.cshtml";
-            public readonly string Overview = "~/Views/Holiday/Overview.cshtml";
+            public readonly string Index = "~/Views/Management/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_HolidayController : DVSE.Web.HolidayManagement.Controllers.HolidayController
+    public partial class T4MVC_ManagementController : DVSE.Web.HolidayManagement.Controllers.ManagementController
     {
-        public T4MVC_HolidayController() : base(Dummy.Instance) { }
+        public T4MVC_ManagementController() : base(Dummy.Instance) { }
 
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
@@ -114,25 +97,6 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
-            return callInfo;
-        }
-
-        partial void OverviewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        public override System.Web.Mvc.ActionResult Overview()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Overview);
-            OverviewOverride(callInfo);
-            return callInfo;
-        }
-
-        partial void CreateRequestOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, DVSE.Web.HolidayManagement.Models.RequestViewModel requestVM);
-
-        public override System.Web.Mvc.ActionResult CreateRequest(DVSE.Web.HolidayManagement.Models.RequestViewModel requestVM)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateRequest);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "requestVM", requestVM);
-            CreateRequestOverride(callInfo, requestVM);
             return callInfo;
         }
 

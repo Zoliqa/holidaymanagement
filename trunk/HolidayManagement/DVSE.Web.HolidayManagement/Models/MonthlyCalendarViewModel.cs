@@ -9,6 +9,8 @@ namespace DVSE.Web.HolidayManagement.Models
     {
         public String Month { get; set; }
 
+        public int MonthIndex { get; set; }
+
         public int FirstDay { get; set; }
 
         public int NumberOfDays { get; set; }
