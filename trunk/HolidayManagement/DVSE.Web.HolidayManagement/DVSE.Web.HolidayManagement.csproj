@@ -60,6 +60,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -146,6 +148,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BaseController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HolidayController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\ValuesController.cs">
@@ -157,7 +163,10 @@
     <Compile Include="HolidayController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\DomainUser.cs" />
+    <Compile Include="Infrastructure\FakeDomainUserProvider.cs" />
     <Compile Include="Infrastructure\HMRoleProvider.cs" />
+    <Compile Include="Infrastructure\IDomainUserProvider.cs" />
     <Compile Include="ManagementController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -272,7 +281,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Holiday\Overview.cshtml" />
+    <Content Include="Views\Holiday\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_MonthlyCalendar.cshtml" />

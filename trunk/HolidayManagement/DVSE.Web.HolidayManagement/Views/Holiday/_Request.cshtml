@@ -1,7 +1,7 @@
 ﻿@model DVSE.Web.HolidayManagement.Models.RequestViewModel
 
 <div id="dlgRequest">
-    @using (Html.BeginForm(MVC.Holiday.CreateRequest()))
+    @using (Ajax.BeginForm(MVC.Holiday.CreateRequest(), new AjaxOptions() { OnComplete = "holidayIndexModel.createRequestCallback" }))
     {
         <div>
             <div>
@@ -9,6 +9,9 @@
             </div>
             <div>
                 @Html.TextBoxFor(x => x.StartDate)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(x => x.StartDate)
             </div>
         </div>
         <div>
@@ -18,6 +21,9 @@
             <div>
                 @Html.TextBoxFor(x => x.EndDate)
             </div>
+            <div>
+                @Html.ValidationMessageFor(x => x.EndDate)
+            </div>
         </div>
         <div>
             <div>
@@ -25,6 +31,9 @@
             </div>
             <div>
                 @Html.DropDownListFor(x => x.PurposeId, Model.Purposes, "Please select reason")
+            </div>
+            <div>
+                @Html.ValidationMessageFor(x => x.PurposeId)
             </div>
         </div>
         

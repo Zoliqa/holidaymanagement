@@ -13,10 +13,13 @@ namespace DVSE.Web.HolidayManagement.App_Start
     using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
     using DVSE.DAL.HolidayManagement.EF;
     using GenericRepository.EntityFramework;
+    using DVSE.Web.HolidayManagement.Infrastructure;
 
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+
+        public static IKernel Kernel { get; set; }
 
         /// <summary>
         /// Starts the application
@@ -25,6 +28,7 @@ namespace DVSE.Web.HolidayManagement.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+
             bootstrapper.Initialize(CreateKernel);
         }
         
@@ -47,6 +51,9 @@ namespace DVSE.Web.HolidayManagement.App_Start
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             
             RegisterServices(kernel);
+
+            Kernel = kernel;
+
             return kernel;
         }
 
@@ -56,6 +63,7 @@ namespace DVSE.Web.HolidayManagement.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IDomainUserProvider>().To<FakeDomainUserProvider>().InSingletonScope();
             kernel.Bind<IEntitiesContext>().To<HMContext>().InRequestScope();
             kernel.Bind<IHMUnitOfWork>().To<HMUnitOfWork>().InRequestScope ();
         }        

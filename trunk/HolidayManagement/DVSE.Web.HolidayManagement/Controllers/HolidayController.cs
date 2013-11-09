@@ -11,47 +11,16 @@ using System.Web.Mvc;
 
 namespace DVSE.Web.HolidayManagement.Controllers
 {
-    public partial class HolidayController : Controller
+    [Authorize(Roles = "NormalUser, AdminUser")]
+    public partial class HolidayController : BaseController
     {
-        private IHMUnitOfWork _hmUnitOfWork;
-
-        public HolidayController(IHMUnitOfWork hmUnitOfWork)
+        public HolidayController(IHMUnitOfWork hmUnitOfWork) 
+            : base(hmUnitOfWork)
         {
-            _hmUnitOfWork = hmUnitOfWork;
-
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en");
         }
 
         public virtual ActionResult Index()
-        {
-            var username = HttpContext.User.Identity.Name;
-
-            var employee = _hmUnitOfWork.EmployeeRepository.FindBy(x => x.ADName == username).SingleOrDefault();
-
-            if (employee == null)
-            {
-                var adminADName = ConfigurationManager.AppSettings["AdminADName"];
-
-                var roleName = username == adminADName ? "AdminUser" : "NormalUser";
-
-                var role = _hmUnitOfWork.RoleRepository.FindBy(x => x.Name == roleName).SingleOrDefault();
-
-                employee = new Employee
-                {
-                    ADName = username,
-                    RoleId = role.Id 
-                };
-
-                _hmUnitOfWork.EmployeeRepository.Add(employee);
-
-                _hmUnitOfWork.Save();
-            }
-
-            return RedirectToAction(MVC.Holiday.Overview());
-        }
-
-        [Authorize(Roles = "NormalUser, AdminUser")]
-        public virtual ActionResult Overview()
         {
             var months = new MonthlyCalendarViewModel[12];
 
@@ -79,14 +48,26 @@ namespace DVSE.Web.HolidayManagement.Controllers
                 }
             };
 
-            return View(MVC.Holiday.Views.Overview, vm);
+            return View(MVC.Holiday.Views.Index, vm);
         }
 
-        [Authorize(Roles = "NormalUser, AdminUser")]
         [HttpPost]
         public virtual ActionResult CreateRequest(RequestViewModel requestVM)
         {
-            return null;
+            var request = new Request
+            {
+                EmployeeId = CurrentEmployee.Id,
+                StartDate = requestVM.StartDate,
+                EndDate = requestVM.EndDate,
+                PurposeId = requestVM.PurposeId,
+                RequestDate = DateTime.Now,
+            };
+
+            _hmUnitOfWork.RequestRepository.Add(request);
+
+            _hmUnitOfWork.Save();
+
+            return Json(new { successed = true });
         }
     }
 }

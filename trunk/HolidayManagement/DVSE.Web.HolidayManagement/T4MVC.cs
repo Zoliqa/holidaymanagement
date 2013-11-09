@@ -24,6 +24,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC
 {
+    public static DVSE.Web.HolidayManagement.Controllers.BaseController Base = new DVSE.Web.HolidayManagement.Controllers.T4MVC_BaseController();
     public static DVSE.Web.HolidayManagement.Controllers.HolidayController Holiday = new DVSE.Web.HolidayManagement.Controllers.T4MVC_HolidayController();
     public static DVSE.Web.HolidayManagement.Controllers.ManagementController Management = new DVSE.Web.HolidayManagement.Controllers.T4MVC_ManagementController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();

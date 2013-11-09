@@ -2,8 +2,9 @@
 .month-calendar {
     display:inline-block;
     vertical-align:top;
-    margin: 10px;
+    margin: 5px;
     border: solid 1px #000;
+    font-size: 11px;
 }
 
 .calendars-row {
@@ -17,6 +18,7 @@
 .month-calendar th {
     padding: 2px;
     text-align: center;
+    font-size: 11px;
 }
 
 .month-calendar td {
@@ -24,3 +26,14 @@
     cursor: pointer;
 }
 
+.month-calendar td.marked, .month-calendar td.first-marked {
+    background-color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+#dlgRequest {
+    display: none;
+}

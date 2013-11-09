@@ -25,9 +25,6 @@ namespace DVSE.Web.HolidayManagement.Controllers
     public partial class ManagementController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ManagementController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected ManagementController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

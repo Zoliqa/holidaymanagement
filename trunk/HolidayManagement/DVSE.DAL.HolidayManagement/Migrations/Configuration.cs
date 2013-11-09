@@ -32,6 +32,12 @@ namespace DVSE.DAL.HolidayManagement.Migrations
                 x => x.Name,
                 new Role { Name = "AdminUser" },
                 new Role { Name = "NormalUser" });
+
+            context.Purposes.AddOrUpdate(x => x.Description,
+                new Purpose { Description = "sickness" },
+                new Purpose { Description = "death" },
+                new Purpose { Description = "personal" },
+                new Purpose { Description = "holiday" });
         }
     }
 }
