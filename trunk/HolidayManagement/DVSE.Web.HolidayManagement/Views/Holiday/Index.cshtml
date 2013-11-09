@@ -1,0 +1,146 @@
+﻿@model DVSE.Web.HolidayManagement.Models.HolidayOverviewViewModel
+
+<div>Hello @User.Identity.Name</div>
+
+@helper PrintCalendars(int i)
+{
+    for (var j = i; j < i + 4; ++j)
+    {
+        Html.RenderPartial(MVC.Shared.Views._MonthlyCalendar, Model.MonthlyCalendars[j]);
+    }
+}
+
+@for (var i = 0; i < Model.MonthlyCalendars.Count(); i += 4)
+{
+    <div class="calendars-row">
+        @PrintCalendars(i)
+    </div>
+}
+
+@Html.Partial(MVC.Holiday.Views._Request, Model.RequestViewModel)
+
+@section Scripts
+{
+<script>
+    function HolidayIndexModel() {
+        var self = this;
+
+        var startDate = null;
+        var endDate = null;
+
+        var $tdStartDate = null;
+
+        var $dlgRequest = null;
+
+        var $tbStartDate = null;
+        var $tbEndDate = null;
+
+        this.initialize = function () {
+            $dlgRequest = $("#dlgRequest");
+
+            $tbStartDate = $("#StartDate");
+            $tbStartDate.datepicker({ dateFormat: "dd-mm-yy" });
+
+            $tbEndDate = $("#EndDate");
+            $tbEndDate.datepicker({ dateFormat: "dd-mm-yy" });
+
+            var $td = $(".month-calendar td");
+
+            $td.on("click", function () {
+                var day = $(this).html().parseInt();
+                var month = $(this).parents(".month-calendar").find("input[name=MonthIndex]").val().parseInt();
+
+                if (startDate == null) {
+                    startDate = new Date(2013, month, day);
+
+                    $tdStartDate = $(this);
+
+                    $(this).addClass("first-marked");
+                }
+                else {
+                    endDate = new Date(2013, month, day);
+
+                    $tbStartDate.val($.datepicker.formatDate("dd-mm-yy", startDate));
+                    $tbEndDate.val($.datepicker.formatDate("dd-mm-yy", endDate));
+
+                    startDate = null;
+
+                    $dlgRequest.dialog({
+                        width: 400,
+                        title: "Create request",
+                        resizable: false,
+                        modal: true,
+                        open: function (event, ui) {
+                        }
+                    });
+                }
+            });
+
+            $td.on("mouseover", function () {
+                if (startDate != null) {
+                    $(".marked").removeClass("marked");
+
+                    var day = parseInt($(this).html());
+                    var month = parseInt($(this).parents(".month-calendar").find("input[name=MonthIndex]").val());
+
+                    var pointedDate = new Date(2013, month, day);
+
+                    if (pointedDate > startDate) {
+                        var $current = $tdStartDate;
+
+                        var date = new Date();
+                        date.setMonth(startDate.getMonth());
+                        date.setDate(startDate.getDate());
+
+                        while (date < pointedDate) {
+                            $next = $current.next("td");
+
+                            if ($next.length == 0 || !$.trim($next.html())) {
+                                $next = $current.parent().next("tr").find("td:first");
+
+                                if ($next.length == 0) {
+                                    $next = $current.parents(".month-calendar").next().find("table tbody tr:first td:first");
+
+                                    if ($next.length == 0) 
+                                        $next = $current.parents(".calendars-row").next().find(".month-calendar:first table tbody tr:first td:first");
+                                    
+
+                                    while (!$.trim($next.html()))
+                                        $next = $next.next();
+                                }
+                            }
+
+                            $next.addClass("marked");
+
+                            $current = $next;
+
+                            date.setDate($next.html().parseInt());
+                            date.setMonth($next.parents(".month-calendar").find("input[name=MonthIndex]").val());
+                        }
+                    }
+                }
+            });
+        };
+
+        this.createRequestCallback = function (result) {
+            var resultJSON = JSON.parse(result.responseText);
+
+            if (resultJSON.successed) {
+                $dlgRequest.dialog("close");
+
+                $(".marked, .first-marked").removeClass("marked").removeClass("first-marked");
+            }
+        };
+    }
+
+    var holidayIndexModel = new HolidayIndexModel();
+
+    $(function () {
+        holidayIndexModel.initialize();
+    });
+
+    String.prototype.parseInt = function () {
+        return parseInt(this);
+    };
+</script>
+}
