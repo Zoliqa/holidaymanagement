@@ -63,14 +63,14 @@ namespace DVSE.Web.HolidayManagement.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
+            public readonly string Overview = "Overview";
             public readonly string CreateRequest = "CreateRequest";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
+            public const string Overview = "Overview";
             public const string CreateRequest = "CreateRequest";
         }
 
@@ -94,10 +94,10 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _Request = "_Request";
-                public readonly string Index = "Index";
+                public readonly string Overview = "Overview";
             }
             public readonly string _Request = "~/Views/Holiday/_Request.cshtml";
-            public readonly string Index = "~/Views/Holiday/Index.cshtml";
+            public readonly string Overview = "~/Views/Holiday/Overview.cshtml";
         }
     }
 
@@ -106,12 +106,12 @@ namespace DVSE.Web.HolidayManagement.Controllers
     {
         public T4MVC_HolidayController() : base(Dummy.Instance) { }
 
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void OverviewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
-        public override System.Web.Mvc.ActionResult Index()
+        public override System.Web.Mvc.ActionResult Overview()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Overview);
+            OverviewOverride(callInfo);
             return callInfo;
         }
 

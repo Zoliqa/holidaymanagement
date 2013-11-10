@@ -20,7 +20,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
         }
 
-        public virtual ActionResult Index()
+        public virtual ActionResult Overview()
         {
             var months = new MonthlyCalendarViewModel[12];
 
@@ -49,7 +49,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
                 }
             };
 
-            return View(MVC.Holiday.Views.Index, vm);
+            return View(MVC.Holiday.Views.Overview, vm);
         }
 
         [HttpPost]

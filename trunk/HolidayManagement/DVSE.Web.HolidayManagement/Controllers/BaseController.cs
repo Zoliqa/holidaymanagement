@@ -19,10 +19,12 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             get
             {
+                var loggedInUsername = _domainUserProvider.GetLoggedInUsername();
+
                 return 
                     _hmUnitOfWork
                         .EmployeeRepository
-                        .FindBy(x => x.ADName == _domainUserProvider.GetLoggedInUsername())
+                        .FindBy(x => x.ADName == loggedInUsername)
                         .SingleOrDefault();
             }
         }
