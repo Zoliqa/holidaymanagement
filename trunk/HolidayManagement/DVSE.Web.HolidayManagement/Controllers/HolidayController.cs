@@ -17,7 +17,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         public HolidayController(IHMUnitOfWork hmUnitOfWork) 
             : base(hmUnitOfWork)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en");
+            // System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
         }
 
         public virtual ActionResult Index()
