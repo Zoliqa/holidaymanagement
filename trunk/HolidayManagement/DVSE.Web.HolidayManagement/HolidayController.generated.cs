@@ -65,6 +65,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             public readonly string Overview = "Overview";
             public readonly string CreateRequest = "CreateRequest";
+            public readonly string GetRequests = "GetRequests";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -72,6 +73,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             public const string Overview = "Overview";
             public const string CreateRequest = "CreateRequest";
+            public const string GetRequests = "GetRequests";
         }
 
 
@@ -94,9 +96,11 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _Request = "_Request";
+                public readonly string _RequestsList = "_RequestsList";
                 public readonly string Overview = "Overview";
             }
             public readonly string _Request = "~/Views/Holiday/_Request.cshtml";
+            public readonly string _RequestsList = "~/Views/Holiday/_RequestsList.cshtml";
             public readonly string Overview = "~/Views/Holiday/Overview.cshtml";
         }
     }
@@ -122,6 +126,15 @@ namespace DVSE.Web.HolidayManagement.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateRequest);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "requestVM", requestVM);
             CreateRequestOverride(callInfo, requestVM);
+            return callInfo;
+        }
+
+        partial void GetRequestsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult GetRequests()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetRequests);
+            GetRequestsOverride(callInfo);
             return callInfo;
         }
 

@@ -78,6 +78,9 @@ namespace Links
             public static readonly string Main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Main.min.js") ? Url("Main.min.js") : Url("Main.js");
         }
     
+        public static readonly string gridmvc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gridmvc.min.js") ? Url("gridmvc.min.js") : Url("gridmvc.js");
+        public static readonly string gridmvc_lang_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gridmvc.lang.ru.min.js") ? Url("gridmvc.lang.ru.min.js") : Url("gridmvc.lang.ru.js");
+        public static readonly string gridmvc_min_js = Url("gridmvc.min.js");
         public static readonly string jquery_1_7_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.7.1.intellisense.min.js") ? Url("jquery-1.7.1.intellisense.min.js") : Url("jquery-1.7.1.intellisense.js");
         public static readonly string jquery_1_7_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.7.1.min.js") ? Url("jquery-1.7.1.min.js") : Url("jquery-1.7.1.js");
         public static readonly string jquery_1_7_1_min_js = Url("jquery-1.7.1.min.js");
@@ -101,6 +104,8 @@ namespace Links
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string Default_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Default.min.css") ? Url("Default.min.css") : Url("Default.css");
+             
+        public static readonly string Gridmvc_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Gridmvc.min.css") ? Url("Gridmvc.min.css") : Url("Gridmvc.css");
              
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
              

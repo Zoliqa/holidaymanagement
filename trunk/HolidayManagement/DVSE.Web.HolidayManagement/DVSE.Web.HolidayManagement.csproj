@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\GenericRepository.EntityFramework.0.3.1-pre01\lib\net40\GenericRepository.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="GridMvc">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
@@ -160,6 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MvcHelpers.cs" />
     <Compile Include="HolidayController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -172,6 +176,7 @@
     </Compile>
     <Compile Include="Models\HolidayOverviewViewModel.cs" />
     <Compile Include="Models\MonthlyCalendarViewModel.cs" />
+    <Compile Include="Models\RequestsListViewModel.cs" />
     <Compile Include="Models\RequestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
@@ -185,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Default.css" />
+    <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -241,8 +247,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Grid.mvc.readme" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Application\Main.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -293,6 +303,9 @@
     </None>
     <Content Include="Views\Management\Index.cshtml" />
     <Content Include="Views\Holiday\_Request.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Holiday\_RequestsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

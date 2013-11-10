@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DVSE.Web.HolidayManagement.Helpers;
 
 namespace DVSE.Web.HolidayManagement.Controllers
 {
@@ -68,7 +69,36 @@ namespace DVSE.Web.HolidayManagement.Controllers
 
             _hmUnitOfWork.Save();
 
-            return Json(new { successed = true });
+            var result = new
+            {
+                successed = true,
+                requestsResult = this.RenderRazorViewToString(MVC.Holiday.Views._RequestsList, CreateRequestsViewModel()),
+            };
+
+            return Json(result);
+        }
+
+        public virtual ActionResult GetRequests()
+        {
+            var vm = CreateRequestsViewModel();
+
+            return PartialView(MVC.Holiday.Views._RequestsList, vm);
+        }
+
+        private RequestsListViewModel CreateRequestsViewModel()
+        {
+            var requests = _hmUnitOfWork.RequestRepository.FindBy(x => x.EmployeeId == CurrentEmployee.Id);
+
+            var vm = new RequestsListViewModel
+            {
+                Requests = requests.Select(x => new RequestViewModel
+                {
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                }).AsEnumerable()
+            };
+
+            return vm;
         }
     }
 }

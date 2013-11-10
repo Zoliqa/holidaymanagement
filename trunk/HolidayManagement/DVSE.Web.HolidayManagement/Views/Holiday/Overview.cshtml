@@ -10,12 +10,26 @@
     }
 }
 
-@for (var i = 0; i < Model.MonthlyCalendars.Count(); i += 4)
-{
-    <div class="calendars-row">
-        @PrintCalendars(i)
+<div id="overview">
+    <div id="overview-left">
+        <fieldset>
+            <legend>Requests</legend>
+            <div id="all-requests">
+                @{ Html.RenderAction(MVC.Holiday.GetRequests()); }
+            </div>
+        </fieldset>
     </div>
-}
+    <div id="overview-right">
+        @for (var i = 0; i < Model.MonthlyCalendars.Count(); i += 4)
+        {
+            <div class="calendars-row">
+                @PrintCalendars(i)
+            </div>
+        }
+    </div>
+</div>
+
+
 
 @Html.Partial(MVC.Holiday.Views._Request, Model.RequestViewModel)
 
@@ -35,6 +49,8 @@
         var $tbStartDate = null;
         var $tbEndDate = null;
 
+        var $allRequests = null;
+
         this.initialize = function () {
             $dlgRequest = $("#dlgRequest");
 
@@ -43,6 +59,8 @@
 
             $tbEndDate = $("#EndDate");
             $tbEndDate.datepicker({ dateFormat: "dd-mm-yy" });
+
+            $allRequests = $("#all-requests");
 
             var $td = $(".month-calendar td");
 
@@ -129,6 +147,8 @@
                 $dlgRequest.dialog("close");
 
                 $(".marked, .first-marked").removeClass("marked").removeClass("first-marked");
+
+                $allRequests.html(resultJSON.requestsResult);
             }
         };
     }

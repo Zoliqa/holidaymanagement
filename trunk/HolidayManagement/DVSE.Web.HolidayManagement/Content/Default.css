@@ -37,3 +37,14 @@
 #dlgRequest {
     display: none;
 }
+
+#overview-left {
+    display: inline-block;
+    width: 30%;
+    vertical-align:top;
+}
+
+#overview-right {
+    display: inline-block;
+    width: 69%;
+}

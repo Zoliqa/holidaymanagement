@@ -6,12 +6,18 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css", "~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+    
 </head>
 <body>
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui", "~/bundles/jqueryval")
+    <script src="~/Scripts/gridmvc.js"></script>
+
     @Scripts.Render("~/bundles/application")
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
