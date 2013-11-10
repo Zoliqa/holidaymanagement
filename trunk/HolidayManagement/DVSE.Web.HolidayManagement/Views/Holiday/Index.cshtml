@@ -1,6 +1,6 @@
 ﻿@model DVSE.Web.HolidayManagement.Models.HolidayOverviewViewModel
 
-<div>Hello @User.Identity.Name</div>
+<div>You're logged in as @Model.LoggedInUserName</div>
 
 @helper PrintCalendars(int i)
 {
@@ -138,24 +138,5 @@
     $(function () {
         holidayIndexModel.initialize();
     });
-
-    $.validator.addMethod('date', function (value, element) {
-        if (this.optional(element)) {
-            return true;
-        }
-
-        try {
-            $.datepicker.parseDate('dd-mm-yy', value);
-        }
-        catch (err) {
-            return false;
-        }
-
-        return true;
-    });
-
-    String.prototype.parseInt = function () {
-        return parseInt(this);
-    };
 </script>
 }

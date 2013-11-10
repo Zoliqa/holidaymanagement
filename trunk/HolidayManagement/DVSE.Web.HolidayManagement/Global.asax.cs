@@ -1,7 +1,7 @@
 ﻿using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
 using DVSE.DAL.HolidayManagement.Entity;
 using DVSE.Web.HolidayManagement.App_Start;
-using DVSE.Web.HolidayManagement.Infrastructure;
+using DVSE.Web.HolidayManagement.Infrastructure.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

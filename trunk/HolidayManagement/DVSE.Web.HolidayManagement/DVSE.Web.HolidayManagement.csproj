@@ -163,10 +163,10 @@
     <Compile Include="HolidayController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\DomainUser.cs" />
-    <Compile Include="Infrastructure\FakeDomainUserProvider.cs" />
+    <Compile Include="Infrastructure\Authentication\DomainUser.cs" />
+    <Compile Include="Infrastructure\Authentication\FakeDomainUserProvider.cs" />
     <Compile Include="Infrastructure\HMRoleProvider.cs" />
-    <Compile Include="Infrastructure\IDomainUserProvider.cs" />
+    <Compile Include="Infrastructure\Authentication\IDomainUserProvider.cs" />
     <Compile Include="ManagementController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -242,6 +242,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\Application\Main.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

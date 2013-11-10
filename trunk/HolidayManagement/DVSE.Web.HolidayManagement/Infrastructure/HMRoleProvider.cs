@@ -1,10 +1,13 @@
 ﻿using DVSE.DAL.HolidayManagement.EF;
 using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
+using DVSE.Web.HolidayManagement.App_Start;
+using DVSE.Web.HolidayManagement.Infrastructure.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Configuration;
 
 namespace DVSE.Web.HolidayManagement.Infrastructure
 {
@@ -12,9 +15,13 @@ namespace DVSE.Web.HolidayManagement.Infrastructure
     {
         private IHMUnitOfWork _hmUnitOfWork;
 
+        private IDomainUserProvider _domainUserProvider;
+
         public HMRoleProvider()
         {
-            _hmUnitOfWork = new HMUnitOfWork(new HMContext()); 
+            _hmUnitOfWork = new HMUnitOfWork(new HMContext());
+
+            _domainUserProvider = NinjectWebCommon.Kernel.GetService(typeof(IDomainUserProvider)) as IDomainUserProvider;
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -56,6 +63,11 @@ namespace DVSE.Web.HolidayManagement.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
+            if (ConfigurationManager.AppSettings["IsInTestingEnvironment"] == "True")
+            {
+                username = _domainUserProvider.GetLoggedInUsername(); 
+            }
+
             var employee = _hmUnitOfWork.EmployeeRepository.FindBy(x => x.ADName == username).SingleOrDefault();
 
             return new[] { employee != null ? employee.Role.Name : "" }; 

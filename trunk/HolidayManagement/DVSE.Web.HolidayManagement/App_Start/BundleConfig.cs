@@ -23,6 +23,9 @@ namespace DVSE.Web.HolidayManagement
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/application").Include(
+                "~/Scripts/Application/Main.js"));
+
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/site.css")
                 .Include("~/Content/Default.css"));

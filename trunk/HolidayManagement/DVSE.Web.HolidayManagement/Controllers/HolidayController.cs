@@ -1,6 +1,7 @@
 ﻿using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
 using DVSE.DAL.HolidayManagement.Entity;
 using DVSE.Web.HolidayManagement.Infrastructure;
+using DVSE.Web.HolidayManagement.Infrastructure.Authentication;
 using DVSE.Web.HolidayManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,9 @@ namespace DVSE.Web.HolidayManagement.Controllers
     [Authorize(Roles = "NormalUser, AdminUser")]
     public partial class HolidayController : BaseController
     {
-        public HolidayController(IHMUnitOfWork hmUnitOfWork) 
-            : base(hmUnitOfWork)
+        public HolidayController(IHMUnitOfWork hmUnitOfWork, IDomainUserProvider domainUserProvider) 
+            : base(hmUnitOfWork, domainUserProvider)
         {
-            // System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
         }
 
         public virtual ActionResult Index()
@@ -41,6 +41,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
 
             var vm = new HolidayOverviewViewModel
             {
+                LoggedInUserName = _domainUserProvider.GetLoggedInUsername(),
                 MonthlyCalendars = months,
                 RequestViewModel = new RequestViewModel
                 {

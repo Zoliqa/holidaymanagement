@@ -13,7 +13,7 @@ namespace DVSE.Web.HolidayManagement.App_Start
     using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
     using DVSE.DAL.HolidayManagement.EF;
     using GenericRepository.EntityFramework;
-    using DVSE.Web.HolidayManagement.Infrastructure;
+    using DVSE.Web.HolidayManagement.Infrastructure.Authentication;
 
     public static class NinjectWebCommon 
     {
