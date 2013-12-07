@@ -1,10 +1,17 @@
-﻿@{
+﻿@model DVSE.Web.HolidayManagement.Models.ManagementIndexViewModel
+
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>User management</h2>
 
 <div id="main">
+
+    <div>
+        <input id="btnAddHoliday" type="button" value="Add holiday" />
+    </div>
+
     <table id="tblEmployees">
         <tr>
             <td></td>
@@ -19,7 +26,9 @@
 </div>
 
 <div class="hidden">
-    <div id="dialog"></div>
+    <div id="dialogPlaceHolder" class="dialog"></div>
+
+    @Html.Partial(MVC.Management.Views._HolidayPeriod, Model.HolidayPeriodViewModel)
 </div>
 
 @section Scripts
@@ -31,17 +40,19 @@
         var elements = {
             $tblUsers: null,
             $tblRequests: null,
-            $dialog: null
+            $dialogPlaceHolder: null,
+            $fHolidayPeriod: null
         };
 
         var initializeElements = function () {
             elements.$tblEmployees = $("#tblEmployees");
             elements.$tblRequests = $("#tblRequests");
-            elements.$dialog = $("#dialog");
+            elements.$dialogPlaceHolder = $("#dialogPlaceHolder");
+            elements.$fHolidayPeriod = $(".fHolidayPeriod");
         };
 
-        var updateEmployee = function (id) {
-            $.getJSON("/Management/UpdateEmployee/" + id, function (result) {
+        var handleUpdateEmployee = function (id) {
+            $.getJSON("/Management/EditEmployee/" + id, function (result) {
 
                 if (result.success == false) {
                     alert(result.message);
@@ -49,14 +60,69 @@
                     return;
                 }
 
-                elements.$dialog.html(result.content);
+                elements.$dialogPlaceHolder.html(result.content);
 
-                elements.$dialog.dialog({
+                elements.$dialogPlaceHolder.dialog({
                     width: 600,
                     title: "Edit employee information",
                     resizable: false,
                     modal: true
                 });
+            });
+        };
+
+        var handleAddHolidayPeriod = function () {
+            var selectedRows = elements.$tblEmployees.jqGrid('getGridParam', 'selarrrow');
+
+            if (selectedRows.length == 0) {
+                return;
+            }
+
+            var $form = elements.$fHolidayPeriod.find("form");
+
+            $form.find("input[type=hidden]").remove();
+
+            $.each(selectedRows, function (i, el) {
+                $form.append("<input type='hidden' name='SelectedEmployeeIds' value='" + el + "' />");
+            });
+
+            elements.$fHolidayPeriod.dialog({
+                width: 600,
+                title: "Add holiday information",
+                resizable: false,
+                modal: true
+            });
+        };
+
+        var createSubGrid = function (subgridId, rowId) {
+            var subgridTableId = subgridId + "_table";
+
+            $("#" + subgridId).html("<table id='" + subgridTableId + "' class='scroll'></table>");
+
+            $("#" + subgridTableId).jqGrid({
+                url: "/Management/GetHolidaysForEmployee/" + rowId,
+                datatype: "json",
+                colNames: ['Start date', 'End date', 'Purpose', 'Cancelled', 'Cancel date', "Actions"],
+                colModel: [
+                    { name: "StartDate", width: 100 },
+                    { name: "EndDate", width: 100 },
+                    { name: "Purpose", width: 100 },
+                    { name: "Cancelled", width: 100 },
+                    { name: "CancelDate", width: 100 },
+                    { name: "Actions", width: 150 }
+                ],
+                height: '100%',
+                gridComplete: function () {
+                    var ids = $(this).jqGrid('getDataIDs');
+
+                    for (var i = 0; i < ids.length; i++) {
+                        var html =
+                            "<input class='btnDeleteHolidayPeriod' type='button' value='Delete' data-id='" + ids[i] + "' />" +
+                            "<input class='btnEditHolidayPeriod' type='button' value='Edit' />";
+
+                        $(this).jqGrid('setRowData', ids[i], { Actions: html });
+                    }
+                }
             });
         };
 
@@ -67,7 +133,6 @@
 
             elements.$tblEmployees.jqGrid({
                 url: "/Management/GetEmployees",
-                editurl: "/Management/EditEmployee",
                 datatype: "json",
                 mtype: "GET",
                 height: 400,
@@ -83,25 +148,47 @@
                 scroll: true,
                 gridComplete: function () {
                     
-                }
+                },
+                multiselect: true,
+                ondblClickRow: handleUpdateEmployee,
+                subGrid: true,
+                subGridRowExpanded: createSubGrid
             });
 
-            $(document).on("dblclick", ".jqgrow", function () {
-                var id = elements.$tblEmployees.jqGrid('getGridParam', 'selrow');
+            $(document).on("click", ".btnDeleteHolidayPeriod", function () {
+                var id = $(this).attr("data-id");
 
-                updateEmployee(id);
+                var $table = $(this).closest("table");
+
+                $.post("/Management/DeleteHolidayPeriod/" + id, function (result) {
+                    if (result.success == false) {
+                        alert(result.message);
+
+                        return;
+                    }
+
+                    $table.trigger("reloadGrid");
+                });
+            });
+
+            $(document).on("click", ".btnEditHolidayPeriod", function () {
             });
 
             $(document).on("click", ".cancel", function () {
-                elements.$dialog.dialog("close");
+                $(this).parents(".dialog").dialog("close");
             });
+
+            $("#btnAddHoliday").on("click", handleAddHolidayPeriod);
+
+            elements.$fHolidayPeriod.find("#StartDate, #EndDate").datepicker({ dateFormat: "dd-mm-yy" });
         };
 
-        this.editEmployeeCallback = function (result) {
+        this.updateCallback = function (result) {
             var resultJSON = JSON.parse(result.responseText);
 
             if (resultJSON.success) {
-                elements.$dialog.dialog("close");
+                elements.$dialogPlaceHolder.dialog("close");
+                elements.$fHolidayPeriod.dialog("close");
 
                 elements.$tblEmployees.trigger("reloadGrid");
             }

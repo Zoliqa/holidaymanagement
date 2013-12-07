@@ -1,8 +1,10 @@
 ﻿@model DVSE.Web.HolidayManagement.Models.EmployeeViewModel
 
 <div id="fEmployee">
-    @using (Ajax.BeginForm(MVC.Management.UpdateEmployee(), new AjaxOptions() { OnComplete = "ManagementModel.instance.editEmployeeCallback" }))
+    @using (Ajax.BeginForm(MVC.Management.EditEmployee(), new AjaxOptions() { OnComplete = "ManagementModel.instance.updateCallback" }))
     {
+        @Html.HiddenFor(x => x.Id)
+        
         <div>
             <div>
                 First name

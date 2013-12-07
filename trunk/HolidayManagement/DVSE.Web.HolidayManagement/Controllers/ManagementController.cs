@@ -21,7 +21,17 @@ namespace DVSE.Web.HolidayManagement.Controllers
 
         public virtual ActionResult Index()
         {
-            return View();
+            var vm = new ManagementIndexViewModel
+            {
+                HolidayPeriodViewModel = new HolidayPeriodViewModel
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    Purposes = new SelectList(_hmUnitOfWork.PurposeRepository.GetAll(), "Id", "Description"),
+                }
+            };
+
+            return View(MVC.Management.Views.Index, vm);
         }
 
         public int GetWorkDaysBetween(DateTime startDate, DateTime endDate)
@@ -71,7 +81,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
             return Json(vm, JsonRequestBehavior.AllowGet);
         }
 
-        public virtual ActionResult UpdateEmployee(int id)
+        public virtual ActionResult EditEmployee(int id)
         {
             var employee = _hmUnitOfWork.EmployeeRepository.GetSingle(id);
 
@@ -104,7 +114,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult UpdateEmployee(EmployeeViewModel employeeVM) 
+        public virtual ActionResult EditEmployee(EmployeeViewModel employeeVM) 
         {
             if (!ModelState.IsValid)
             {
@@ -138,6 +148,85 @@ namespace DVSE.Web.HolidayManagement.Controllers
             }
             else
                 currentHolidayInformation.DaysAvailable = employeeVM.DaysAvailable.Value;
+
+            _hmUnitOfWork.Save();
+
+            return Json(new { success = true });
+        }
+
+        public virtual ActionResult GetHolidaysForEmployee(int id)
+        {
+            var employee = _hmUnitOfWork.EmployeeRepository.GetSingle(id);
+            var holidays = employee.HolidayPeriods.ToList();
+
+            var vm = new GridDataJson
+            {
+                records = holidays.Count(),
+                rows = holidays.Select(x => new GridRowJson
+                {
+                    id = x.Id,
+                    cell = new object[] 
+                    {
+                        x.StartDate.ToString("dd-MM-yyyy"),
+                        x.EndDate.ToString("dd-MM-yyyy"),
+                        x.Purpose.Description,
+                        x.CancelDate != null,
+                        x.CancelDate
+                    }
+                }).ToList()
+            };
+
+            return Json(vm, JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult EditHolidayPeriod(int id)
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public virtual ActionResult EditHolidayPeriod(HolidayPeriodViewModel holidayPeriodVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { success = false, message = "Data is not valid." });
+            }
+
+            foreach (var employeeId in holidayPeriodVM.SelectedEmployeeIds)
+            {
+                var employee = _hmUnitOfWork.EmployeeRepository.GetSingle(employeeId);
+
+                if (employee != null)
+                {
+                    var holidayPeriod = new HolidayPeriod
+                    {
+                        StartDate = holidayPeriodVM.StartDate.Value,
+                        EndDate = holidayPeriodVM.EndDate.Value,
+                        Note = holidayPeriodVM.Note,
+                        EmployeeId = employee.Id,
+                        PurposeId = holidayPeriodVM.PurposeId.Value
+                    };
+
+                    _hmUnitOfWork.HolidayPeriodRepository.Add(holidayPeriod);
+                }
+            }
+
+            _hmUnitOfWork.Save();
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public virtual ActionResult DeleteHolidayPeriod(int id)
+        {
+            var holidayPeriod = _hmUnitOfWork.HolidayPeriodRepository.GetSingle(id);
+
+            if (holidayPeriod == null)
+            {
+                return Json(new { success = false, message = "Holiday period was not found." });
+            }
+
+            _hmUnitOfWork.HolidayPeriodRepository.Delete(holidayPeriod);
 
             _hmUnitOfWork.Save();
 
