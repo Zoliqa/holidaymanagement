@@ -10,7 +10,17 @@ using System.Threading.Tasks;
 
 namespace DVSE.DAL.HolidayManagement.EF
 {
-    public class HMContext : EntitiesContext // DbContext // EntitiesContext
+    // - note: to update the database uncomment DbContext so that HMContext extends the DbContext class
+    // - after you update the database comment the DbContext and let HmContext extend EntitiesContext again
+    // - to update the database to the latest migration run the following command in the package manager console:
+    //   update-database -startupprojectname:dvse.dal.holidaymanagement
+    // - to update the database to a specific migration run the following command:
+    //   update-database -startupprojectname:dvse.dal.holidaymanagement -targetmigration:MigrationName
+    // - to create a migration make changes to the entities classes and then run the following command:
+    //   add-migration MigrationName -startupprojectname:dvse.dal.holidaymanagement
+    // - for further info look here: http://msdn.microsoft.com/en-us/data/jj591621.aspx and  
+    //   http://coding.abel.nu/2012/03/ef-migrations-command-reference/
+    public class HMContext : EntitiesContext// DbContext // EntitiesContext
     {
         public DbSet<Employee> Employees { get; set; }
 

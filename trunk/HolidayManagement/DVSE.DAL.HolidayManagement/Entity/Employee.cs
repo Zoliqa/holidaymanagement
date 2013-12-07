@@ -25,7 +25,7 @@ namespace DVSE.DAL.HolidayManagement.Entity
 
         public virtual Role Role { get; set; }
 
-        public virtual ICollection<HolidayInformation> Informations { get; set; }
+        public virtual ICollection<HolidayInformation> HolidayInformations { get; set; }
 
         public int? TeamId { get; set; }
 

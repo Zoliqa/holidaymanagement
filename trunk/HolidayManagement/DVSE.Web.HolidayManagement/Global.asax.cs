@@ -1,10 +1,12 @@
-﻿using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
+﻿using DVSE.DAL.HolidayManagement.EF;
+using DVSE.DAL.HolidayManagement.EF.UnitOfWork;
 using DVSE.DAL.HolidayManagement.Entity;
 using DVSE.Web.HolidayManagement.App_Start;
 using DVSE.Web.HolidayManagement.Infrastructure.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace DVSE.Web.HolidayManagement
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            Database.SetInitializer<HMContext>(null);
+
             var domainUserProvider = NinjectWebCommon.Kernel.GetService(typeof(IDomainUserProvider)) as IDomainUserProvider;
             var hmUnitOfWork = NinjectWebCommon.Kernel.GetService(typeof(IHMUnitOfWork)) as IHMUnitOfWork;
 
@@ -46,12 +50,23 @@ namespace DVSE.Web.HolidayManagement
                 {
                     employee = new Employee
                     {
+                        FirstName = domainUser.Name,
+                        LastName = domainUser.Name,
                         ADName = domainUser.Name,
                         EmailAddress = domainUser.EmailAddress,
                         RoleId = domainUser.Name == adminADName ? adminUserRole.Id : normalUserRole.Id
                     };
 
                     hmUnitOfWork.EmployeeRepository.Add(employee);
+
+                    var holidayInformation = new HolidayInformation
+                    {
+                        DaysAvailable = 21,
+                        Year = DateTime.Now.Year,
+                        Employee = employee
+                    };
+
+                    hmUnitOfWork.HolidayInformationRepository.Add(holidayInformation);
                 }
             }
 

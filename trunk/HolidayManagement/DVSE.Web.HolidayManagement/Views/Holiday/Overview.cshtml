@@ -15,7 +15,13 @@
         <fieldset>
             <legend>Requests</legend>
             <div id="all-requests">
-                @{ Html.RenderAction(MVC.Holiday.GetRequests()); }
+                <input id='btnDeleteRequest' type='button' value='Delete' />
+
+                <table id="tblRequests">
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table> 
             </div>
         </fieldset>
     </div>
@@ -28,8 +34,6 @@
         }
     </div>
 </div>
-
-
 
 @Html.Partial(MVC.Holiday.Views._Request, Model.RequestViewModel)
 
@@ -72,6 +76,8 @@
                     startDate = new Date(2013, month, day);
 
                     $tdStartDate = $(this);
+
+                    $(".first-marked").removeClass("first-marked");
 
                     $(this).addClass("first-marked");
                 }
@@ -138,17 +144,52 @@
                     }
                 }
             });
+
+            $("#tblRequests").jqGrid({
+                url: "/Holiday/GetRequests",
+                editurl: "/Holiday/EditRequest",
+                datatype: "json",
+                mtype: "GET",
+                height: 200,
+                colNames: ["Start date", "End date", "Purpose", "Status"],
+                colModel: [
+                    { name: "StartDate", width: 100, sortable: true },
+                    { name: "EndDate", width: 100, sortable: true },
+                    { name: "Purpose", width: 100, sortable: false },
+                    { name: "Status", width: 100, sortable: true },
+                ],
+                scroll: true
+                //gridComplete: function () {
+                //    var ids = $("#tblRequests").jqGrid('getDataIDs');
+                //    for (var i = 0; i < ids.length; i++) {
+                //        var html = "<input class='btnDeleteRequest' type='button' value='Delete' />";
+
+                //        $("#tblRequests").jqGrid('setRowData', ids[i], { Action: html });
+                //    }
+
+                //    $(".btnDeleteRequest").on ("click", deleteRequest);
+                //}
+            });
+
+            $("#btnDeleteRequest").on("click", deleteRequest);
+        };
+
+        var deleteRequest = function () {
+            var row = $("#tblRequests").jqGrid('getGridParam', 'selrow');
+
+            if (row != null)
+                $("#tblRequests").jqGrid('delGridRow', row, { reloadAfterSubmit: true });
         };
 
         this.createRequestCallback = function (result) {
             var resultJSON = JSON.parse(result.responseText);
 
-            if (resultJSON.successed) {
+            if (resultJSON.success) {
                 $dlgRequest.dialog("close");
 
                 $(".marked, .first-marked").removeClass("marked").removeClass("first-marked");
 
-                $allRequests.html(resultJSON.requestsResult);
+                $("#tblRequests").trigger("reloadGrid");
             }
         };
     }

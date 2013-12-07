@@ -41,6 +41,12 @@ namespace DVSE.Web.HolidayManagement.Controllers
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult UpdateEmployee()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UpdateEmployee);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ManagementController Actions { get { return MVC.Management; } }
@@ -58,15 +64,27 @@ namespace DVSE.Web.HolidayManagement.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string GetEmployees = "GetEmployees";
+            public readonly string UpdateEmployee = "UpdateEmployee";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string GetEmployees = "GetEmployees";
+            public const string UpdateEmployee = "UpdateEmployee";
         }
 
 
+        static readonly ActionParamsClass_UpdateEmployee s_params_UpdateEmployee = new ActionParamsClass_UpdateEmployee();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_UpdateEmployee UpdateEmployeeParams { get { return s_params_UpdateEmployee; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_UpdateEmployee
+        {
+            public readonly string employeeVM = "employeeVM";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -77,8 +95,10 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Employee = "_Employee";
                 public readonly string Index = "Index";
             }
+            public readonly string _Employee = "~/Views/Management/_Employee.cshtml";
             public readonly string Index = "~/Views/Management/Index.cshtml";
         }
     }
@@ -94,6 +114,25 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        partial void GetEmployeesOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult GetEmployees()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetEmployees);
+            GetEmployeesOverride(callInfo);
+            return callInfo;
+        }
+
+        partial void UpdateEmployeeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, DVSE.Web.HolidayManagement.Models.EmployeeViewModel employeeVM);
+
+        public override System.Web.Mvc.ActionResult UpdateEmployee(DVSE.Web.HolidayManagement.Models.EmployeeViewModel employeeVM)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UpdateEmployee);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "employeeVM", employeeVM);
+            UpdateEmployeeOverride(callInfo, employeeVM);
             return callInfo;
         }
 

@@ -78,9 +78,191 @@ namespace Links
             public static readonly string Main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Main.min.js") ? Url("Main.min.js") : Url("Main.js");
         }
     
-        public static readonly string gridmvc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gridmvc.min.js") ? Url("gridmvc.min.js") : Url("gridmvc.js");
-        public static readonly string gridmvc_lang_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gridmvc.lang.ru.min.js") ? Url("gridmvc.lang.ru.min.js") : Url("gridmvc.lang.ru.js");
-        public static readonly string gridmvc_min_js = Url("gridmvc.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class jqGrid {
+            private const string URLPATH = "~/Scripts/jqGrid";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class css {
+                private const string URLPATH = "~/Scripts/jqGrid/css";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string ellipsis_xbl_xml = Url("ellipsis-xbl.xml");
+                public static readonly string ui_jqgrid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui.jqgrid.min.css") ? Url("ui.jqgrid.min.css") : Url("ui.jqgrid.css");
+                     
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class js {
+                private const string URLPATH = "~/Scripts/jqGrid/js";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string Changes_txt = Url("Changes.txt");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class i18n {
+                    private const string URLPATH = "~/Scripts/jqGrid/js/i18n";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string grid_locale_ar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ar.min.js") ? Url("grid.locale-ar.min.js") : Url("grid.locale-ar.js");
+                    public static readonly string grid_locale_bg_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-bg.min.js") ? Url("grid.locale-bg.min.js") : Url("grid.locale-bg.js");
+                    public static readonly string grid_locale_bg1251_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-bg1251.min.js") ? Url("grid.locale-bg1251.min.js") : Url("grid.locale-bg1251.js");
+                    public static readonly string grid_locale_cat_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-cat.min.js") ? Url("grid.locale-cat.min.js") : Url("grid.locale-cat.js");
+                    public static readonly string grid_locale_cn_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-cn.min.js") ? Url("grid.locale-cn.min.js") : Url("grid.locale-cn.js");
+                    public static readonly string grid_locale_cs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-cs.min.js") ? Url("grid.locale-cs.min.js") : Url("grid.locale-cs.js");
+                    public static readonly string grid_locale_da_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-da.min.js") ? Url("grid.locale-da.min.js") : Url("grid.locale-da.js");
+                    public static readonly string grid_locale_de_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-de.min.js") ? Url("grid.locale-de.min.js") : Url("grid.locale-de.js");
+                    public static readonly string grid_locale_dk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-dk.min.js") ? Url("grid.locale-dk.min.js") : Url("grid.locale-dk.js");
+                    public static readonly string grid_locale_el_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-el.min.js") ? Url("grid.locale-el.min.js") : Url("grid.locale-el.js");
+                    public static readonly string grid_locale_en_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-en.min.js") ? Url("grid.locale-en.min.js") : Url("grid.locale-en.js");
+                    public static readonly string grid_locale_es_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-es.min.js") ? Url("grid.locale-es.min.js") : Url("grid.locale-es.js");
+                    public static readonly string grid_locale_fa_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-fa.min.js") ? Url("grid.locale-fa.min.js") : Url("grid.locale-fa.js");
+                    public static readonly string grid_locale_fi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-fi.min.js") ? Url("grid.locale-fi.min.js") : Url("grid.locale-fi.js");
+                    public static readonly string grid_locale_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-fr.min.js") ? Url("grid.locale-fr.min.js") : Url("grid.locale-fr.js");
+                    public static readonly string grid_locale_gl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-gl.min.js") ? Url("grid.locale-gl.min.js") : Url("grid.locale-gl.js");
+                    public static readonly string grid_locale_he_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-he.min.js") ? Url("grid.locale-he.min.js") : Url("grid.locale-he.js");
+                    public static readonly string grid_locale_hr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-hr.min.js") ? Url("grid.locale-hr.min.js") : Url("grid.locale-hr.js");
+                    public static readonly string grid_locale_hr1250_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-hr1250.min.js") ? Url("grid.locale-hr1250.min.js") : Url("grid.locale-hr1250.js");
+                    public static readonly string grid_locale_hu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-hu.min.js") ? Url("grid.locale-hu.min.js") : Url("grid.locale-hu.js");
+                    public static readonly string grid_locale_id_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-id.min.js") ? Url("grid.locale-id.min.js") : Url("grid.locale-id.js");
+                    public static readonly string grid_locale_is_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-is.min.js") ? Url("grid.locale-is.min.js") : Url("grid.locale-is.js");
+                    public static readonly string grid_locale_it_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-it.min.js") ? Url("grid.locale-it.min.js") : Url("grid.locale-it.js");
+                    public static readonly string grid_locale_ja_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ja.min.js") ? Url("grid.locale-ja.min.js") : Url("grid.locale-ja.js");
+                    public static readonly string grid_locale_kr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-kr.min.js") ? Url("grid.locale-kr.min.js") : Url("grid.locale-kr.js");
+                    public static readonly string grid_locale_lt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-lt.min.js") ? Url("grid.locale-lt.min.js") : Url("grid.locale-lt.js");
+                    public static readonly string grid_locale_mne_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-mne.min.js") ? Url("grid.locale-mne.min.js") : Url("grid.locale-mne.js");
+                    public static readonly string grid_locale_nl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-nl.min.js") ? Url("grid.locale-nl.min.js") : Url("grid.locale-nl.js");
+                    public static readonly string grid_locale_no_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-no.min.js") ? Url("grid.locale-no.min.js") : Url("grid.locale-no.js");
+                    public static readonly string grid_locale_pl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-pl.min.js") ? Url("grid.locale-pl.min.js") : Url("grid.locale-pl.js");
+                    public static readonly string grid_locale_pt_br_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-pt-br.min.js") ? Url("grid.locale-pt-br.min.js") : Url("grid.locale-pt-br.js");
+                    public static readonly string grid_locale_pt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-pt.min.js") ? Url("grid.locale-pt.min.js") : Url("grid.locale-pt.js");
+                    public static readonly string grid_locale_ro_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ro.min.js") ? Url("grid.locale-ro.min.js") : Url("grid.locale-ro.js");
+                    public static readonly string grid_locale_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ru.min.js") ? Url("grid.locale-ru.min.js") : Url("grid.locale-ru.js");
+                    public static readonly string grid_locale_sk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sk.min.js") ? Url("grid.locale-sk.min.js") : Url("grid.locale-sk.js");
+                    public static readonly string grid_locale_sr_latin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sr-latin.min.js") ? Url("grid.locale-sr-latin.min.js") : Url("grid.locale-sr-latin.js");
+                    public static readonly string grid_locale_sr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sr.min.js") ? Url("grid.locale-sr.min.js") : Url("grid.locale-sr.js");
+                    public static readonly string grid_locale_sv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sv.min.js") ? Url("grid.locale-sv.min.js") : Url("grid.locale-sv.js");
+                    public static readonly string grid_locale_th_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-th.min.js") ? Url("grid.locale-th.min.js") : Url("grid.locale-th.js");
+                    public static readonly string grid_locale_tr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-tr.min.js") ? Url("grid.locale-tr.min.js") : Url("grid.locale-tr.js");
+                    public static readonly string grid_locale_tw_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-tw.min.js") ? Url("grid.locale-tw.min.js") : Url("grid.locale-tw.js");
+                    public static readonly string grid_locale_ua_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ua.min.js") ? Url("grid.locale-ua.min.js") : Url("grid.locale-ua.js");
+                    public static readonly string grid_locale_vi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-vi.min.js") ? Url("grid.locale-vi.min.js") : Url("grid.locale-vi.js");
+                }
+            
+                public static readonly string install_txt = Url("install.txt");
+                public static readonly string jquery_1_9_0_min_js = Url("jquery-1.9.0.min.js");
+                public static readonly string jquery_jqGrid_min_js = Url("jquery.jqGrid.min.js");
+                public static readonly string jquery_jqGrid_src_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jqGrid.src.min.js") ? Url("jquery.jqGrid.src.min.js") : Url("jquery.jqGrid.src.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class plugins {
+                private const string URLPATH = "~/Scripts/jqGrid/plugins";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string grid_addons_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.addons.min.js") ? Url("grid.addons.min.js") : Url("grid.addons.js");
+                public static readonly string grid_postext_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.postext.min.js") ? Url("grid.postext.min.js") : Url("grid.postext.js");
+                public static readonly string grid_setcolumns_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.setcolumns.min.js") ? Url("grid.setcolumns.min.js") : Url("grid.setcolumns.js");
+                public static readonly string jquery_contextmenu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.contextmenu.min.js") ? Url("jquery.contextmenu.min.js") : Url("jquery.contextmenu.js");
+                public static readonly string jquery_searchFilter_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.searchFilter.min.js") ? Url("jquery.searchFilter.min.js") : Url("jquery.searchFilter.js");
+                public static readonly string jquery_tablednd_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.tablednd.min.js") ? Url("jquery.tablednd.min.js") : Url("jquery.tablednd.js");
+                public static readonly string searchFilter_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/searchFilter.min.css") ? Url("searchFilter.min.css") : Url("searchFilter.css");
+                     
+                public static readonly string ui_multiselect_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui.multiselect.min.css") ? Url("ui.multiselect.min.css") : Url("ui.multiselect.css");
+                     
+                public static readonly string ui_multiselect_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui.multiselect.min.js") ? Url("ui.multiselect.min.js") : Url("ui.multiselect.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class src {
+                private const string URLPATH = "~/Scripts/jqGrid/src";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class css {
+                    private const string URLPATH = "~/Scripts/jqGrid/src/css";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string ellipsis_xbl_xml = Url("ellipsis-xbl.xml");
+                    public static readonly string ui_jqgrid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui.jqgrid.min.css") ? Url("ui.jqgrid.min.css") : Url("ui.jqgrid.css");
+                         
+                    public static readonly string ui_multiselect_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui.multiselect.min.css") ? Url("ui.multiselect.min.css") : Url("ui.multiselect.css");
+                         
+                }
+            
+                public static readonly string grid_base_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.base.min.js") ? Url("grid.base.min.js") : Url("grid.base.js");
+                public static readonly string grid_celledit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.celledit.min.js") ? Url("grid.celledit.min.js") : Url("grid.celledit.js");
+                public static readonly string grid_common_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.common.min.js") ? Url("grid.common.min.js") : Url("grid.common.js");
+                public static readonly string grid_custom_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.custom.min.js") ? Url("grid.custom.min.js") : Url("grid.custom.js");
+                public static readonly string grid_filter_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.filter.min.js") ? Url("grid.filter.min.js") : Url("grid.filter.js");
+                public static readonly string grid_formedit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.formedit.min.js") ? Url("grid.formedit.min.js") : Url("grid.formedit.js");
+                public static readonly string grid_grouping_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.grouping.min.js") ? Url("grid.grouping.min.js") : Url("grid.grouping.js");
+                public static readonly string grid_import_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.import.min.js") ? Url("grid.import.min.js") : Url("grid.import.js");
+                public static readonly string grid_inlinedit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.inlinedit.min.js") ? Url("grid.inlinedit.min.js") : Url("grid.inlinedit.js");
+                public static readonly string grid_jqueryui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.jqueryui.min.js") ? Url("grid.jqueryui.min.js") : Url("grid.jqueryui.js");
+                public static readonly string grid_loader_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.loader.min.js") ? Url("grid.loader.min.js") : Url("grid.loader.js");
+                public static readonly string grid_subgrid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.subgrid.min.js") ? Url("grid.subgrid.min.js") : Url("grid.subgrid.js");
+                public static readonly string grid_tbltogrid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.tbltogrid.min.js") ? Url("grid.tbltogrid.min.js") : Url("grid.tbltogrid.js");
+                public static readonly string grid_treegrid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.treegrid.min.js") ? Url("grid.treegrid.min.js") : Url("grid.treegrid.js");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class i18n {
+                    private const string URLPATH = "~/Scripts/jqGrid/src/i18n";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string grid_locale_ar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ar.min.js") ? Url("grid.locale-ar.min.js") : Url("grid.locale-ar.js");
+                    public static readonly string grid_locale_bg_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-bg.min.js") ? Url("grid.locale-bg.min.js") : Url("grid.locale-bg.js");
+                    public static readonly string grid_locale_bg1251_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-bg1251.min.js") ? Url("grid.locale-bg1251.min.js") : Url("grid.locale-bg1251.js");
+                    public static readonly string grid_locale_cat_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-cat.min.js") ? Url("grid.locale-cat.min.js") : Url("grid.locale-cat.js");
+                    public static readonly string grid_locale_cn_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-cn.min.js") ? Url("grid.locale-cn.min.js") : Url("grid.locale-cn.js");
+                    public static readonly string grid_locale_cs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-cs.min.js") ? Url("grid.locale-cs.min.js") : Url("grid.locale-cs.js");
+                    public static readonly string grid_locale_da_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-da.min.js") ? Url("grid.locale-da.min.js") : Url("grid.locale-da.js");
+                    public static readonly string grid_locale_de_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-de.min.js") ? Url("grid.locale-de.min.js") : Url("grid.locale-de.js");
+                    public static readonly string grid_locale_dk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-dk.min.js") ? Url("grid.locale-dk.min.js") : Url("grid.locale-dk.js");
+                    public static readonly string grid_locale_el_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-el.min.js") ? Url("grid.locale-el.min.js") : Url("grid.locale-el.js");
+                    public static readonly string grid_locale_en_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-en.min.js") ? Url("grid.locale-en.min.js") : Url("grid.locale-en.js");
+                    public static readonly string grid_locale_es_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-es.min.js") ? Url("grid.locale-es.min.js") : Url("grid.locale-es.js");
+                    public static readonly string grid_locale_fa_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-fa.min.js") ? Url("grid.locale-fa.min.js") : Url("grid.locale-fa.js");
+                    public static readonly string grid_locale_fi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-fi.min.js") ? Url("grid.locale-fi.min.js") : Url("grid.locale-fi.js");
+                    public static readonly string grid_locale_fr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-fr.min.js") ? Url("grid.locale-fr.min.js") : Url("grid.locale-fr.js");
+                    public static readonly string grid_locale_gl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-gl.min.js") ? Url("grid.locale-gl.min.js") : Url("grid.locale-gl.js");
+                    public static readonly string grid_locale_he_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-he.min.js") ? Url("grid.locale-he.min.js") : Url("grid.locale-he.js");
+                    public static readonly string grid_locale_hr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-hr.min.js") ? Url("grid.locale-hr.min.js") : Url("grid.locale-hr.js");
+                    public static readonly string grid_locale_hr1250_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-hr1250.min.js") ? Url("grid.locale-hr1250.min.js") : Url("grid.locale-hr1250.js");
+                    public static readonly string grid_locale_hu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-hu.min.js") ? Url("grid.locale-hu.min.js") : Url("grid.locale-hu.js");
+                    public static readonly string grid_locale_id_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-id.min.js") ? Url("grid.locale-id.min.js") : Url("grid.locale-id.js");
+                    public static readonly string grid_locale_is_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-is.min.js") ? Url("grid.locale-is.min.js") : Url("grid.locale-is.js");
+                    public static readonly string grid_locale_it_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-it.min.js") ? Url("grid.locale-it.min.js") : Url("grid.locale-it.js");
+                    public static readonly string grid_locale_ja_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ja.min.js") ? Url("grid.locale-ja.min.js") : Url("grid.locale-ja.js");
+                    public static readonly string grid_locale_kr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-kr.min.js") ? Url("grid.locale-kr.min.js") : Url("grid.locale-kr.js");
+                    public static readonly string grid_locale_lt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-lt.min.js") ? Url("grid.locale-lt.min.js") : Url("grid.locale-lt.js");
+                    public static readonly string grid_locale_mne_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-mne.min.js") ? Url("grid.locale-mne.min.js") : Url("grid.locale-mne.js");
+                    public static readonly string grid_locale_nl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-nl.min.js") ? Url("grid.locale-nl.min.js") : Url("grid.locale-nl.js");
+                    public static readonly string grid_locale_no_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-no.min.js") ? Url("grid.locale-no.min.js") : Url("grid.locale-no.js");
+                    public static readonly string grid_locale_pl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-pl.min.js") ? Url("grid.locale-pl.min.js") : Url("grid.locale-pl.js");
+                    public static readonly string grid_locale_pt_br_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-pt-br.min.js") ? Url("grid.locale-pt-br.min.js") : Url("grid.locale-pt-br.js");
+                    public static readonly string grid_locale_pt_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-pt.min.js") ? Url("grid.locale-pt.min.js") : Url("grid.locale-pt.js");
+                    public static readonly string grid_locale_ro_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ro.min.js") ? Url("grid.locale-ro.min.js") : Url("grid.locale-ro.js");
+                    public static readonly string grid_locale_ru_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ru.min.js") ? Url("grid.locale-ru.min.js") : Url("grid.locale-ru.js");
+                    public static readonly string grid_locale_sk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sk.min.js") ? Url("grid.locale-sk.min.js") : Url("grid.locale-sk.js");
+                    public static readonly string grid_locale_sr_latin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sr-latin.min.js") ? Url("grid.locale-sr-latin.min.js") : Url("grid.locale-sr-latin.js");
+                    public static readonly string grid_locale_sr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sr.min.js") ? Url("grid.locale-sr.min.js") : Url("grid.locale-sr.js");
+                    public static readonly string grid_locale_sv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-sv.min.js") ? Url("grid.locale-sv.min.js") : Url("grid.locale-sv.js");
+                    public static readonly string grid_locale_th_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-th.min.js") ? Url("grid.locale-th.min.js") : Url("grid.locale-th.js");
+                    public static readonly string grid_locale_tr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-tr.min.js") ? Url("grid.locale-tr.min.js") : Url("grid.locale-tr.js");
+                    public static readonly string grid_locale_tw_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-tw.min.js") ? Url("grid.locale-tw.min.js") : Url("grid.locale-tw.js");
+                    public static readonly string grid_locale_ua_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-ua.min.js") ? Url("grid.locale-ua.min.js") : Url("grid.locale-ua.js");
+                    public static readonly string grid_locale_vi_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/grid.locale-vi.min.js") ? Url("grid.locale-vi.min.js") : Url("grid.locale-vi.js");
+                }
+            
+                public static readonly string jqDnR_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jqDnR.min.js") ? Url("jqDnR.min.js") : Url("jqDnR.js");
+                public static readonly string jqModal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jqModal.min.js") ? Url("jqModal.min.js") : Url("jqModal.js");
+                public static readonly string jquery_fmatter_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.fmatter.min.js") ? Url("jquery.fmatter.min.js") : Url("jquery.fmatter.js");
+                public static readonly string jquery_jqGrid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jqGrid.min.js") ? Url("jquery.jqGrid.min.js") : Url("jquery.jqGrid.js");
+                public static readonly string JsonXml_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/JsonXml.min.js") ? Url("JsonXml.min.js") : Url("JsonXml.js");
+            }
+        
+        }
+    
         public static readonly string jquery_1_7_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.7.1.intellisense.min.js") ? Url("jquery-1.7.1.intellisense.min.js") : Url("jquery-1.7.1.intellisense.js");
         public static readonly string jquery_1_7_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.7.1.min.js") ? Url("jquery-1.7.1.min.js") : Url("jquery-1.7.1.js");
         public static readonly string jquery_1_7_1_min_js = Url("jquery-1.7.1.min.js");
@@ -104,8 +286,6 @@ namespace Links
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string Default_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Default.min.css") ? Url("Default.min.css") : Url("Default.css");
-             
-        public static readonly string Gridmvc_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Gridmvc.min.css") ? Url("Gridmvc.min.css") : Url("Gridmvc.css");
              
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
              

@@ -47,6 +47,12 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateRequest);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult EditRequest()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRequest);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HolidayController Actions { get { return MVC.Holiday; } }
@@ -66,6 +72,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public readonly string Overview = "Overview";
             public readonly string CreateRequest = "CreateRequest";
             public readonly string GetRequests = "GetRequests";
+            public readonly string EditRequest = "EditRequest";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -74,6 +81,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public const string Overview = "Overview";
             public const string CreateRequest = "CreateRequest";
             public const string GetRequests = "GetRequests";
+            public const string EditRequest = "EditRequest";
         }
 
 
@@ -84,6 +92,15 @@ namespace DVSE.Web.HolidayManagement.Controllers
         public class ActionParamsClass_CreateRequest
         {
             public readonly string requestVM = "requestVM";
+        }
+        static readonly ActionParamsClass_EditRequest s_params_EditRequest = new ActionParamsClass_EditRequest();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_EditRequest EditRequestParams { get { return s_params_EditRequest; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_EditRequest
+        {
+            public readonly string oper = "oper";
+            public readonly string id = "id";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -96,11 +113,9 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _Request = "_Request";
-                public readonly string _RequestsList = "_RequestsList";
                 public readonly string Overview = "Overview";
             }
             public readonly string _Request = "~/Views/Holiday/_Request.cshtml";
-            public readonly string _RequestsList = "~/Views/Holiday/_RequestsList.cshtml";
             public readonly string Overview = "~/Views/Holiday/Overview.cshtml";
         }
     }
@@ -135,6 +150,17 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetRequests);
             GetRequestsOverride(callInfo);
+            return callInfo;
+        }
+
+        partial void EditRequestOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string oper, int id);
+
+        public override System.Web.Mvc.ActionResult EditRequest(string oper, int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRequest);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "oper", oper);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            EditRequestOverride(callInfo, oper, id);
             return callInfo;
         }
 

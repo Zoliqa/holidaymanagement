@@ -71,34 +71,51 @@ namespace DVSE.Web.HolidayManagement.Controllers
 
             var result = new
             {
-                successed = true,
-                requestsResult = this.RenderRazorViewToString(MVC.Holiday.Views._RequestsList, CreateRequestsViewModel()),
+                success = true,
             };
 
             return Json(result);
         }
 
-        public virtual ActionResult GetRequests()
+        public virtual ActionResult GetRequests() 
         {
-            var vm = CreateRequestsViewModel();
+            var requests = _hmUnitOfWork.RequestRepository.FindBy(x => x.EmployeeId == CurrentEmployee.Id).ToList();
 
-            return PartialView(MVC.Holiday.Views._RequestsList, vm);
-        }
-
-        private RequestsListViewModel CreateRequestsViewModel()
-        {
-            var requests = _hmUnitOfWork.RequestRepository.FindBy(x => x.EmployeeId == CurrentEmployee.Id);
-
-            var vm = new RequestsListViewModel
+            var vm = new GridDataJson
             {
-                Requests = requests.Select(x => new RequestViewModel
-                {
-                    StartDate = x.StartDate,
-                    EndDate = x.EndDate,
-                }).AsEnumerable()
+                records = requests.Count(),
+                rows = requests.Select(x => 
+                    new GridRowJson
+                    { 
+                        id = x.Id,
+                        cell = new object[] 
+                        {
+                            x.StartDate.ToString("dd-MM-yyyy"), 
+                            x.EndDate.ToString("dd-MM-yyyy"), 
+                            x.Purpose.Description,
+                            x.Accepted != null ? "accepted" : "pending"
+                        }
+                    }).ToList()
             };
 
-            return vm;
+            return Json(vm, JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual ActionResult EditRequest(String oper, int id)
+        {
+            if (oper == "del")
+            {
+                var request = _hmUnitOfWork.RequestRepository.GetSingle(id);
+
+                if (request != null)
+                {
+                    _hmUnitOfWork.RequestRepository.Delete(request);
+
+                    _hmUnitOfWork.Save();
+                }
+            }
+
+            return Json(new {success = false});
         }
     }
 }
