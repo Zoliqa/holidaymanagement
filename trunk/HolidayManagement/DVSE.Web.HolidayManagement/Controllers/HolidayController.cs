@@ -23,27 +23,10 @@ namespace DVSE.Web.HolidayManagement.Controllers
 
         public virtual ActionResult Overview()
         {
-            var months = new MonthlyCalendarViewModel[12];
-
-            var now = DateTime.Now;
-
-            for (var i = 0; i < 12; ++i)
-            {
-                var month = new DateTime(now.Year, i + 1, 1);
-
-                months[i] = new MonthlyCalendarViewModel
-                {
-                    Month = month.ToString("MMMM"),
-                    MonthIndex = i,
-                    FirstDay = (int)month.DayOfWeek, 
-                    NumberOfDays = DateTime.DaysInMonth(now.Year, i + 1),
-                };
-            }
-
             var vm = new HolidayOverviewViewModel
             {
                 LoggedInUserName = _domainUserProvider.GetLoggedInUsername(),
-                MonthlyCalendars = months,
+                MonthlyCalendars = base.CreateMonthlyCalendarViewModels(CurrentEmployee),
                 RequestViewModel = new RequestViewModel
                 {
                     Purposes = new SelectList(_hmUnitOfWork.PurposeRepository.GetAll(), "Id", "Description"),

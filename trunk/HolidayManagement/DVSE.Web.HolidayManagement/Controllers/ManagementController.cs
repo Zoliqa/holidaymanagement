@@ -104,13 +104,13 @@ namespace DVSE.Web.HolidayManagement.Controllers
                 DaysAvailable = currentHolidayInformation != null ? currentHolidayInformation.DaysAvailable : (int?)null
             };
 
-            var result = new 
+            var json = new 
             {
                 success = true,
                 content = base.RenderRazorViewToString(MVC.Management.Views._Employee, employeeVM)
             };
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -154,10 +154,10 @@ namespace DVSE.Web.HolidayManagement.Controllers
             return Json(new { success = true });
         }
 
-        public virtual ActionResult GetHolidaysForEmployee(int id)
+        public virtual ActionResult GetHolidaysForEmployee(int id, bool forCurrentYear)
         {
             var employee = _hmUnitOfWork.EmployeeRepository.GetSingle(id);
-            var holidays = employee.HolidayPeriods.ToList();
+            var holidays = employee.HolidayPeriods.Where(x => !forCurrentYear || x.StartDate.Year == DateTime.Now.Year).ToList();
 
             var vm = new GridDataJson
             {
@@ -171,17 +171,13 @@ namespace DVSE.Web.HolidayManagement.Controllers
                         x.EndDate.ToString("dd-MM-yyyy"),
                         x.Purpose.Description,
                         x.CancelDate != null,
-                        x.CancelDate
+                        x.CancelDate != null ? x.CancelDate.Value.ToString("dd-MM-yyyy") : null,
+                        x.Note,
                     }
                 }).ToList()
             };
 
             return Json(vm, JsonRequestBehavior.AllowGet);
-        }
-
-        public virtual ActionResult EditHolidayPeriod(int id)
-        {
-            return null;
         }
 
         [HttpPost]
@@ -217,7 +213,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult DeleteHolidayPeriod(int id)
+        public virtual ActionResult CancelHolidayPeriod(int id, String note)
         {
             var holidayPeriod = _hmUnitOfWork.HolidayPeriodRepository.GetSingle(id);
 
@@ -226,11 +222,50 @@ namespace DVSE.Web.HolidayManagement.Controllers
                 return Json(new { success = false, message = "Holiday period was not found." });
             }
 
-            _hmUnitOfWork.HolidayPeriodRepository.Delete(holidayPeriod);
+            if (holidayPeriod.EndDate < DateTime.Now || holidayPeriod.StartDate < DateTime.Now)
+            {
+                return Json(new { success = false, message = "Cannot cancel this holiday period." });
+            }
+
+            holidayPeriod.CancelDate = DateTime.Now;
+            holidayPeriod.Note = note;
 
             _hmUnitOfWork.Save();
 
             return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public virtual ActionResult UndoCancelHolidayPeriod(int id, String note)
+        {
+            var holidayPeriod = _hmUnitOfWork.HolidayPeriodRepository.GetSingle(id);
+
+            if (holidayPeriod == null)
+            {
+                return Json(new { success = false, message = "Holiday period was not found." });
+            }
+
+            holidayPeriod.CancelDate = null;
+            holidayPeriod.Note = note;
+
+            _hmUnitOfWork.Save();
+
+            return Json(new { success = true });
+        }
+
+        public virtual ActionResult GetOverviewForEmployee(int id)
+        {
+            var employee = _hmUnitOfWork.EmployeeRepository.GetSingle(id);
+
+            var calendarsVM = base.CreateMonthlyCalendarViewModels(employee);
+
+            var json = new
+            {
+                success = true,
+                content = base.RenderRazorViewToString(MVC.Shared.Views._Calendars, calendarsVM)
+            };
+
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
 }

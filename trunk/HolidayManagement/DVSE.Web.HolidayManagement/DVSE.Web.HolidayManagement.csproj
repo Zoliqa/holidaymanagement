@@ -424,6 +424,7 @@
     <Content Include="Views\Holiday\_Request.cshtml" />
     <Content Include="Views\Management\_Employee.cshtml" />
     <Content Include="Views\Management\_HolidayPeriod.cshtml" />
+    <Content Include="Views\Shared\_Calendars.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,14 +2,6 @@
 
 <div>You're logged in as @Model.LoggedInUserName</div>
 
-@helper PrintCalendars(int i)
-{
-    for (var j = i; j < i + 4; ++j)
-    {
-        Html.RenderPartial(MVC.Shared.Views._MonthlyCalendar, Model.MonthlyCalendars[j]);
-    }
-}
-
 <div id="overview">
     <div id="overview-left">
         <fieldset>
@@ -26,12 +18,7 @@
         </fieldset>
     </div>
     <div id="overview-right">
-        @for (var i = 0; i < Model.MonthlyCalendars.Count(); i += 4)
-        {
-            <div class="calendars-row">
-                @PrintCalendars(i) 
-            </div>
-        }
+        @Html.Partial(MVC.Shared.Views._Calendars, Model.MonthlyCalendars)
     </div>
 </div>
 

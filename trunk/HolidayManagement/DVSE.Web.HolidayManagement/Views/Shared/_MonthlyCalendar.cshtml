@@ -28,22 +28,46 @@
                     <tr>
                         @for (var j = 0; j < 7; ++j)
                         {
-                            <td>
-                            @if (i == 0)
+                            var content = 0;
+                            
+                            if (i == 0)
                             {
                                 if (j >= Model.FirstDay)
                                 {
-                                    @(++day) 
+                                    content = ++day; 
                                 }
                             }
                             else
                             {
                                 if (day < Model.NumberOfDays)
                                 {
-                                    @(++day)
+                                    content = ++day; 
                                 }
                             }
-                            </td>
+
+                            if (content == 0)
+                            { 
+                                <td>
+                                </td>
+                            }
+                            else
+                            {
+                                var classNames = "none";
+
+                                if (Model.Holidays.Contains(content))
+                                {
+                                    classNames = "holiday";
+                                }
+                                else
+                                    if (Model.Requests.Contains(content))
+                                    {
+                                        classNames = "request";
+                                    }
+                                
+                                <td class="@classNames">
+                                    @content
+                                </td>
+                            }
                         }
                     </tr>
                 }

@@ -6,6 +6,14 @@
 
 <h2>User management</h2>
 
+<fieldset>
+    <legend>Filters</legend>
+
+    <div>
+        <input type="checkbox" checked="checked" id="cbHolidaysForCurrentYear" /> Show holidays only for current year
+    </div>
+</fieldset>
+
 <div id="main">
 
     <div>
@@ -41,7 +49,8 @@
             $tblUsers: null,
             $tblRequests: null,
             $dialogPlaceHolder: null,
-            $fHolidayPeriod: null
+            $fHolidayPeriod: null,
+            $cbHolidaysForCurrentYear: null
         };
 
         var initializeElements = function () {
@@ -49,6 +58,7 @@
             elements.$tblRequests = $("#tblRequests");
             elements.$dialogPlaceHolder = $("#dialogPlaceHolder");
             elements.$fHolidayPeriod = $(".fHolidayPeriod");
+            elements.$cbHolidaysForCurrentYear = $("#cbHolidaysForCurrentYear");
         };
 
         var handleUpdateEmployee = function (id) {
@@ -65,6 +75,25 @@
                 elements.$dialogPlaceHolder.dialog({
                     width: 600,
                     title: "Edit employee information",
+                    resizable: false,
+                    modal: true
+                });
+            });
+        };
+
+        var handleGetOverviewForEmployee = function (id) {
+            $.getJSON("/Management/GetOverviewForEmployee/" + id, function (result) {
+                if (result.success == false) {
+                    alert(result.message);
+
+                    return;
+                }
+
+                elements.$dialogPlaceHolder.html(result.content);
+
+                elements.$dialogPlaceHolder.dialog({
+                    width: 1024,
+                    title: "Holiday overview for employee",
                     resizable: false,
                     modal: true
                 });
@@ -99,31 +128,74 @@
 
             $("#" + subgridId).html("<table id='" + subgridTableId + "' class='scroll'></table>");
 
+            var holidaysForCurrentYear = elements.$cbHolidaysForCurrentYear.is(":checked");
+
             $("#" + subgridTableId).jqGrid({
-                url: "/Management/GetHolidaysForEmployee/" + rowId,
+                url: "/Management/GetHolidaysForEmployee/" + rowId + "?forcurrentyear=" + holidaysForCurrentYear,
                 datatype: "json",
-                colNames: ['Start date', 'End date', 'Purpose', 'Cancelled', 'Cancel date', "Actions"],
+                colNames: ['Start date', 'End date', 'Purpose', 'Cancelled', 'Cancel date', "Note", "Actions"],
                 colModel: [
                     { name: "StartDate", width: 100 },
                     { name: "EndDate", width: 100 },
                     { name: "Purpose", width: 100 },
                     { name: "Cancelled", width: 100 },
                     { name: "CancelDate", width: 100 },
+                    { name: "Note", width: 100 },
                     { name: "Actions", width: 150 }
                 ],
                 height: '100%',
+                ondblClickRow: function () {
+                    event.stopPropagation();
+
+                    return false;
+                },
                 gridComplete: function () {
                     var ids = $(this).jqGrid('getDataIDs');
 
                     for (var i = 0; i < ids.length; i++) {
-                        var html =
-                            "<input class='btnDeleteHolidayPeriod' type='button' value='Delete' data-id='" + ids[i] + "' />" +
-                            "<input class='btnEditHolidayPeriod' type='button' value='Edit' />";
+                        var rowData = $(this).jqGrid("getRowData", ids[i]);
 
-                        $(this).jqGrid('setRowData', ids[i], { Actions: html });
+                        var html;
+                        var className = "";
+
+                        if (rowData.Cancelled == "false")
+                            html =
+                                "<input class='btnCancelHolidayPeriod' type='button' value='Cancel' data-id='" + ids[i] + "' />";
+                        else {
+                            html =
+                                "<input class='btnUndoCancelHolidayPeriod' type='button' value='Undo' data-id='" + ids[i] + "' />";
+
+                            className = "cancelled";
+                        }
+
+                        $(this).jqGrid('setRowData', ids[i], { Actions: html }, className);
                     }
                 }
             });
+        };
+
+        var cancelOrUndoCancelHolidayPeriod = function ($button, isCancelling) {
+            var id = $button.attr("data-id");
+
+            var $table = $button.closest("table");
+
+            var note = prompt("Please enter note");
+
+            var url = isCancelling ? "/Management/CancelHolidayPeriod/" : "/Management/UndoCancelHolidayPeriod/";
+
+            $.post(url, { id: id, note: note }, function (result) {
+                if (result.success == false) {
+                    alert(result.message);
+
+                    return;
+                }
+
+                $table.trigger("reloadGrid");
+            });
+        };
+
+        var reloadGrid = function () {
+            elements.$tblEmployees.trigger("reloadGrid");
         };
 
         this.instance = null;
@@ -136,7 +208,7 @@
                 datatype: "json",
                 mtype: "GET",
                 height: 400,
-                colNames: ["First name", "Last name", "Email address", "Team", "Days total", "Days left"],
+                colNames: ["First name", "Last name", "Email address", "Team", "Days total", "Days left", "Actions"],
                 colModel: [
                     { name: "FirstName", width: 150, sortable: true },
                     { name: "LastName", width: 150, sortable: true },
@@ -144,10 +216,20 @@
                     { name: "Team", width: 100, sortable: true },
                     { name: "DaysTotal", width: 100, sortable: true },
                     { name: "DaysLeft", width: 100, sortable: true },
+                    { name: "Actions", width: 100 },
                 ],
                 scroll: true,
                 gridComplete: function () {
-                    
+                    var ids = $(this).jqGrid('getDataIDs');
+
+                    for (var i = 0; i < ids.length; i++) {
+                        var rowData = $(this).jqGrid("getRowData", ids[i]);
+
+                        html =
+                            "<input class='btnViewCalendarForEmployee' type='button' value='View calendar' data-id='" + ids[i] + "' />";
+
+                        $(this).jqGrid('setRowData', ids[i], { Actions: html });
+                    }
                 },
                 multiselect: true,
                 ondblClickRow: handleUpdateEmployee,
@@ -155,23 +237,18 @@
                 subGridRowExpanded: createSubGrid
             });
 
-            $(document).on("click", ".btnDeleteHolidayPeriod", function () {
-                var id = $(this).attr("data-id");
-
-                var $table = $(this).closest("table");
-
-                $.post("/Management/DeleteHolidayPeriod/" + id, function (result) {
-                    if (result.success == false) {
-                        alert(result.message);
-
-                        return;
-                    }
-
-                    $table.trigger("reloadGrid");
-                });
+            $(document).on("click", ".btnCancelHolidayPeriod", function () {
+                cancelOrUndoCancelHolidayPeriod($(this), true);
             });
 
-            $(document).on("click", ".btnEditHolidayPeriod", function () {
+            $(document).on("click", ".btnUndoCancelHolidayPeriod", function () {
+                cancelOrUndoCancelHolidayPeriod($(this), false);
+            });
+
+            $(document).on("click", ".btnViewCalendarForEmployee", function () {
+                var id = $(this).attr("data-id");
+                
+                handleGetOverviewForEmployee (id);
             });
 
             $(document).on("click", ".cancel", function () {
@@ -181,6 +258,8 @@
             $("#btnAddHoliday").on("click", handleAddHolidayPeriod);
 
             elements.$fHolidayPeriod.find("#StartDate, #EndDate").datepicker({ dateFormat: "dd-mm-yy" });
+
+            elements.$cbHolidaysForCurrentYear.on("click", reloadGrid);
         };
 
         this.updateCallback = function (result) {
@@ -190,7 +269,10 @@
                 elements.$dialogPlaceHolder.dialog("close");
                 elements.$fHolidayPeriod.dialog("close");
 
-                elements.$tblEmployees.trigger("reloadGrid");
+                reloadGrid();
+            }
+            else {
+                alert(resultJSON.message);
             }
         };
     }

@@ -15,6 +15,10 @@ namespace DVSE.Web.HolidayManagement.Models
 
         public int NumberOfDays { get; set; }
 
+        public IList<int> Holidays { get; set; }
+
+        public IList<int> Requests { get; set; }
+
         public MonthlyCalendarViewModel()
         {
         }

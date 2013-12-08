@@ -59,6 +59,24 @@ namespace DVSE.Web.HolidayManagement.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditHolidayPeriod);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CancelHolidayPeriod()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CancelHolidayPeriod);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult UndoCancelHolidayPeriod()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UndoCancelHolidayPeriod);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult GetOverviewForEmployee()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetOverviewForEmployee);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ManagementController Actions { get { return MVC.Management; } }
@@ -80,6 +98,9 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public readonly string EditEmployee = "EditEmployee";
             public readonly string GetHolidaysForEmployee = "GetHolidaysForEmployee";
             public readonly string EditHolidayPeriod = "EditHolidayPeriod";
+            public readonly string CancelHolidayPeriod = "CancelHolidayPeriod";
+            public readonly string UndoCancelHolidayPeriod = "UndoCancelHolidayPeriod";
+            public readonly string GetOverviewForEmployee = "GetOverviewForEmployee";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -90,6 +111,9 @@ namespace DVSE.Web.HolidayManagement.Controllers
             public const string EditEmployee = "EditEmployee";
             public const string GetHolidaysForEmployee = "GetHolidaysForEmployee";
             public const string EditHolidayPeriod = "EditHolidayPeriod";
+            public const string CancelHolidayPeriod = "CancelHolidayPeriod";
+            public const string UndoCancelHolidayPeriod = "UndoCancelHolidayPeriod";
+            public const string GetOverviewForEmployee = "GetOverviewForEmployee";
         }
 
 
@@ -109,6 +133,7 @@ namespace DVSE.Web.HolidayManagement.Controllers
         public class ActionParamsClass_GetHolidaysForEmployee
         {
             public readonly string id = "id";
+            public readonly string forCurrentYear = "forCurrentYear";
         }
         static readonly ActionParamsClass_EditHolidayPeriod s_params_EditHolidayPeriod = new ActionParamsClass_EditHolidayPeriod();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -116,8 +141,33 @@ namespace DVSE.Web.HolidayManagement.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_EditHolidayPeriod
         {
-            public readonly string id = "id";
             public readonly string holidayPeriodVM = "holidayPeriodVM";
+        }
+        static readonly ActionParamsClass_CancelHolidayPeriod s_params_CancelHolidayPeriod = new ActionParamsClass_CancelHolidayPeriod();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CancelHolidayPeriod CancelHolidayPeriodParams { get { return s_params_CancelHolidayPeriod; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CancelHolidayPeriod
+        {
+            public readonly string id = "id";
+            public readonly string note = "note";
+        }
+        static readonly ActionParamsClass_UndoCancelHolidayPeriod s_params_UndoCancelHolidayPeriod = new ActionParamsClass_UndoCancelHolidayPeriod();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_UndoCancelHolidayPeriod UndoCancelHolidayPeriodParams { get { return s_params_UndoCancelHolidayPeriod; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_UndoCancelHolidayPeriod
+        {
+            public readonly string id = "id";
+            public readonly string note = "note";
+        }
+        static readonly ActionParamsClass_GetOverviewForEmployee s_params_GetOverviewForEmployee = new ActionParamsClass_GetOverviewForEmployee();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetOverviewForEmployee GetOverviewForEmployeeParams { get { return s_params_GetOverviewForEmployee; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetOverviewForEmployee
+        {
+            public readonly string id = "id";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -182,23 +232,14 @@ namespace DVSE.Web.HolidayManagement.Controllers
             return callInfo;
         }
 
-        partial void GetHolidaysForEmployeeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+        partial void GetHolidaysForEmployeeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, bool forCurrentYear);
 
-        public override System.Web.Mvc.ActionResult GetHolidaysForEmployee(int id)
+        public override System.Web.Mvc.ActionResult GetHolidaysForEmployee(int id, bool forCurrentYear)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetHolidaysForEmployee);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            GetHolidaysForEmployeeOverride(callInfo, id);
-            return callInfo;
-        }
-
-        partial void EditHolidayPeriodOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
-
-        public override System.Web.Mvc.ActionResult EditHolidayPeriod(int id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditHolidayPeriod);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            EditHolidayPeriodOverride(callInfo, id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "forCurrentYear", forCurrentYear);
+            GetHolidaysForEmployeeOverride(callInfo, id, forCurrentYear);
             return callInfo;
         }
 
@@ -209,6 +250,38 @@ namespace DVSE.Web.HolidayManagement.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditHolidayPeriod);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "holidayPeriodVM", holidayPeriodVM);
             EditHolidayPeriodOverride(callInfo, holidayPeriodVM);
+            return callInfo;
+        }
+
+        partial void CancelHolidayPeriodOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, string note);
+
+        public override System.Web.Mvc.ActionResult CancelHolidayPeriod(int id, string note)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CancelHolidayPeriod);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "note", note);
+            CancelHolidayPeriodOverride(callInfo, id, note);
+            return callInfo;
+        }
+
+        partial void UndoCancelHolidayPeriodOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, string note);
+
+        public override System.Web.Mvc.ActionResult UndoCancelHolidayPeriod(int id, string note)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UndoCancelHolidayPeriod);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "note", note);
+            UndoCancelHolidayPeriodOverride(callInfo, id, note);
+            return callInfo;
+        }
+
+        partial void GetOverviewForEmployeeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        public override System.Web.Mvc.ActionResult GetOverviewForEmployee(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetOverviewForEmployee);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            GetOverviewForEmployeeOverride(callInfo, id);
             return callInfo;
         }
 
