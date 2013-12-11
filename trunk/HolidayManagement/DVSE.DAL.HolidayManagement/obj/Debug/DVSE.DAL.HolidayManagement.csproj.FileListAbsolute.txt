@@ -44,3 +44,19 @@ J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\trunk\H
 J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.pdb
 J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.AddADNameToEmployee.resources
 J:\Zoliqa\Documents\Work\University\Masters\Semester 1\HolidayManagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csprojResolveAssemblyReference.cache
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.dll.config
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.dll
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\DVSE.DAL.HolidayManagement.pdb
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\EntityFramework.dll
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.dll
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.EntityFramework.dll
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\EntityFramework.xml
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.xml
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\bin\Debug\GenericRepository.EntityFramework.xml
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csprojResolveAssemblyReference.cache
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.CreateDb.resources
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.AddRequestDateToRequest.resources
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.Migrations.AddADNameToEmployee.resources
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.csproj.GenerateResource.Cache
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.dll
+F:\Mesteri\SoftverRendszerek\HolidayManagement\Projekt\holidaymanagement\trunk\HolidayManagement\DVSE.DAL.HolidayManagement\obj\Debug\DVSE.DAL.HolidayManagement.pdb

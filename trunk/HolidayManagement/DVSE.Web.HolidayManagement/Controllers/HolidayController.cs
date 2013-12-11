@@ -16,6 +16,8 @@ namespace DVSE.Web.HolidayManagement.Controllers
     [Authorize(Roles = "NormalUser, AdminUser")]
     public partial class HolidayController : BaseController
     {
+        // testing commit from Kinga
+
         public HolidayController(IHMUnitOfWork hmUnitOfWork, IDomainUserProvider domainUserProvider) 
             : base(hmUnitOfWork, domainUserProvider)
         {

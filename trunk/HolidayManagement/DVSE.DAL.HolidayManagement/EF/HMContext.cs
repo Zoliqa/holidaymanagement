@@ -20,7 +20,7 @@ namespace DVSE.DAL.HolidayManagement.EF
     //   add-migration MigrationName -startupprojectname:dvse.dal.holidaymanagement
     // - for further info look here: http://msdn.microsoft.com/en-us/data/jj591621.aspx and  
     //   http://coding.abel.nu/2012/03/ef-migrations-command-reference/
-    public class HMContext : EntitiesContext// DbContext // EntitiesContext
+    public class HMContext : EntitiesContext // DbContext // EntitiesContext
     {
         public DbSet<Employee> Employees { get; set; }
 
